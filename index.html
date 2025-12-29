@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery App</title>
+    <link rel="stylesheet" href="food-app-styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Side Menu -->
+        <div class="side-menu" id="sideMenu">
+            <div class="side-menu-header">
+                <div class="menu-profile">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="Profile">
+                    <div class="menu-profile-info">
+                        <h3>Alex Johnson</h3>
+                        <p>alex@foodie.com</p>
+                    </div>
+                </div>
+                <button class="menu-close" onclick="toggleMenu()">✕</button>
+            </div>
+            
+            <nav class="side-menu-nav">
+                <a href="#" class="menu-item active" onclick="goToScreen(2); toggleMenu();">
+                    <span class="menu-icon">🏠</span>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="menu-item" onclick="goToScreen(7); toggleMenu();">
+                    <span class="menu-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="menu-icon">📦</span>
+                    <span>My Orders</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="menu-icon">❤️</span>
+                    <span>Favorites</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="menu-icon">📍</span>
+                    <span>Addresses</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="menu-icon">💳</span>
+                    <span>Payment Methods</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="menu-icon">🎁</span>
+                    <span>Offers & Promos</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span class="menu-icon">⚙️</span>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="menu-item" onclick="goToScreen(1); toggleMenu();">
+                    <span class="menu-icon">🚪</span>
+                    <span>Logout</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Menu Overlay -->
+        <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+
+        <!-- Screen 1: Sign In / Sign Up -->
+        <div class="screen login-screen" id="screen1">
+            <div class="login-container">
+                <div class="login-header">
+                    <h1 class="app-logo">🍔 FoodieHub</h1>
+                    <h2 class="login-title">Welcome</h2>
+                    <p class="login-subtitle">Sign in to start ordering delicious food</p>
+                </div>
+
+                <!-- Tab Switcher -->
+                <div class="auth-tabs">
+                    <button class="auth-tab active" onclick="switchAuthTab('signin')">Sign In</button>
+                    <button class="auth-tab" onclick="switchAuthTab('signup')">Sign Up</button>
+                </div>
+
+                <!-- Sign In Form -->
+                <form class="login-form" id="signinForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="your@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" placeholder="Enter your password" required>
+                    </div>
+
+                    <a href="#" class="forgot-link">Forgot password?</a>
+
+                    <button type="submit" class="login-btn">Sign In</button>
+                </form>
+
+                <!-- Sign Up Form -->
+                <form class="login-form" id="signupForm" style="display: none;" onsubmit="handleSignup(event)">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-input" placeholder="Your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="your@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" class="form-input" placeholder="+1 (555) 000-0000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" placeholder="Create a password" required>
+                    </div>
+
+                    <button type="submit" class="login-btn">Sign Up</button>
+                </form>
+
+                <div class="social-login">
+                    <p class="social-text">Or continue with</p>
+                    <div class="social-buttons">
+                        <button class="social-btn" title="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10 0C4.477 0 0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.879V12.89h-2.54V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.989C16.343 19.129 20 14.99 20 10c0-5.523-4.477-10-10-10z"/>
+                            </svg>
+                        </button>
+                        <button class="social-btn" title="Google">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M19.6 10.227c0-.709-.064-1.39-.182-2.045H10v3.868h5.382a4.6 4.6 0 01-1.996 3.018v2.51h3.232c1.891-1.742 2.982-4.305 2.982-7.35z"/>
+                                <path d="M10 20c2.7 0 4.964-.895 6.618-2.423l-3.232-2.509c-.895.6-2.04.955-3.386.955-2.605 0-4.81-1.76-5.595-4.123H1.064v2.59A9.996 9.996 0 0010 20z"/>
+                            </svg>
+                        </button>
+                        <button class="social-btn" title="Apple">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M17.05 14.8c-.4 1.2-1.9 4.2-3.8 4.2-1.1 0-1.4-.6-2.6-.6-1.3 0-1.7.6-2.8.6-1.9 0-3.6-3.4-3.6-6.7 0-3.5 2.2-5.4 4.3-5.4 1.1 0 2 .7 2.7.7.6 0 1.6-.8 2.8-.8.5 0 2.2.1 3.3 1.6-2.8 1.5-2.4 5.4.7 6.4zM13.6 3c.6.8 1 1.8.9 2.9-1-.1-2.2-.7-2.9-1.5-.6-.7-1.1-1.8-1-2.9 1.1.1 2.3.7 3 1.5z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 2: Home (Choose Action) -->
+        <div class="screen home-screen" id="screen2" style="display: none;">
+            <div class="status-bar">
+                <span class="time">9:41</span>
+                <div class="status-icons">
+                    <span class="signal">📶</span>
+                    <span class="wifi">📡</span>
+                    <span class="battery">🔋</span>
+                </div>
+            </div>
+
+            <div class="header">
+                <button class="menu-btn" onclick="toggleMenu()">☰</button>
+                <div class="location-display">
+                    <span class="location-icon">📍</span>
+                    <span class="location-text">Downtown, NY</span>
+                </div>
+                <div class="profile-pic">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="Profile">
+                </div>
+            </div>
+
+            <div class="content home-content">
+                <h1 class="page-title">What would you<br>like to eat?</h1>
+
+                <!-- Search Bar -->
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" placeholder="Search restaurants or dishes...">
+                </div>
+
+                <!-- Category Tabs -->
+                <div class="category-tabs">
+                    <button class="category-tab active">All</button>
+                    <button class="category-tab">🍕 Pizza</button>
+                    <button class="category-tab">🍔 Burgers</button>
+                    <button class="category-tab">🍣 Sushi</button>
+                    <button class="category-tab">🍜 Asian</button>
+                </div>
+
+                <!-- Featured Banner -->
+                <div class="featured-banner">
+                    <div class="banner-content">
+                        <h3 class="banner-title">Get 50% OFF</h3>
+                        <p class="banner-text">On your first order</p>
+                        <button class="banner-btn">Order Now</button>
+                    </div>
+                    <div class="banner-image">
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&h=300&fit=crop" alt="Pizza">
+                    </div>
+                </div>
+
+                <!-- Restaurant Cards -->
+                <div class="section-header">
+                    <h3 class="section-title">Popular Restaurants</h3>
+                    <a href="#" class="view-all">View all</a>
+                </div>
+
+                <div class="restaurant-grid">
+                    <div class="restaurant-card" onclick="goToScreen(3)">
+                        <div class="restaurant-image">
+                            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&h=300&fit=crop" alt="Italian House">
+                            <div class="discount-badge">20% OFF</div>
+                            <div class="delivery-badge">25-30 min</div>
+                        </div>
+                        <div class="restaurant-info">
+                            <h4 class="restaurant-name">Italian House</h4>
+                            <div class="restaurant-meta">
+                                <span class="rating">⭐ 4.8</span>
+                                <span class="cuisine">Italian • Pizza</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="restaurant-card" onclick="goToScreen(3)">
+                        <div class="restaurant-image">
+                            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=300&fit=crop" alt="Burger Palace">
+                            <div class="delivery-badge">20-25 min</div>
+                        </div>
+                        <div class="restaurant-info">
+                            <h4 class="restaurant-name">Burger Palace</h4>
+                            <div class="restaurant-meta">
+                                <span class="rating">⭐ 4.6</span>
+                                <span class="cuisine">American • Fast Food</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="restaurant-card" onclick="goToScreen(3)">
+                        <div class="restaurant-image">
+                            <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400&h=300&fit=crop" alt="Sushi Master">
+                            <div class="discount-badge">15% OFF</div>
+                            <div class="delivery-badge">30-35 min</div>
+                        </div>
+                        <div class="restaurant-info">
+                            <h4 class="restaurant-name">Sushi Master</h4>
+                            <div class="restaurant-meta">
+                                <span class="rating">⭐ 4.9</span>
+                                <span class="cuisine">Japanese • Sushi</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="restaurant-card" onclick="goToScreen(3)">
+                        <div class="restaurant-image">
+                            <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=300&fit=crop" alt="Thai Spice">
+                            <div class="delivery-badge">35-40 min</div>
+                        </div>
+                        <div class="restaurant-info">
+                            <h4 class="restaurant-name">Thai Spice</h4>
+                            <div class="restaurant-meta">
+                                <span class="rating">⭐ 4.7</span>
+                                <span class="cuisine">Thai • Asian</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-nav">
+                <button class="nav-btn active" onclick="goToScreen(2)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                    </svg>
+                    <span class="nav-label">Home</span>
+                </button>
+                <button class="nav-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="m21 21-4.35-4.35"/>
+                    </svg>
+                    <span class="nav-label">Search</span>
+                </button>
+                <button class="nav-btn" onclick="goToScreen(5)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 2L7.17 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2h-3.17L15 2H9z"/>
+                        <circle cx="12" cy="13" r="3"/>
+                    </svg>
+                    <span class="nav-label">Orders</span>
+                </button>
+                <button class="nav-btn" onclick="goToScreen(7)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"/>
+                        <rect x="14" y="3" width="7" height="7"/>
+                        <rect x="3" y="14" width="7" height="7"/>
+                        <rect x="14" y="14" width="7" height="7"/>
+                    </svg>
+                    <span class="nav-label">More</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Screen 3: Restaurant Menu -->
+        <div class="screen menu-screen" id="screen3" style="display: none;">
+            <div class="menu-header">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=400&fit=crop" alt="Restaurant" class="menu-bg">
+                <button class="back-btn" onclick="goToScreen(2)">‹</button>
+                <button class="favorite-btn">♡</button>
+                <div class="menu-overlay"></div>
+            </div>
+
+            <div class="menu-content">
+                <div class="restaurant-header">
+                    <h2 class="restaurant-title">Italian House</h2>
+                    <div class="restaurant-stats">
+                        <span class="stat">⭐ 4.8 (500+)</span>
+                        <span class="stat">🚚 25-30 min</span>
+                        <span class="stat">💰 $$$</span>
+                    </div>
+                    <p class="restaurant-desc">Authentic Italian cuisine with fresh ingredients</p>
+                </div>
+
+                <!-- Menu Categories -->
+                <div class="menu-categories">
+                    <button class="menu-category active">Popular</button>
+                    <button class="menu-category">Pizza</button>
+                    <button class="menu-category">Pasta</button>
+                    <button class="menu-category">Salads</button>
+                    <button class="menu-category">Desserts</button>
+                </div>
+
+                <!-- Menu Items -->
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200&h=200&fit=crop" alt="Margherita Pizza">
+                        <div class="menu-item-info">
+                            <h4 class="menu-item-name">Margherita Pizza</h4>
+                            <p class="menu-item-desc">Fresh tomato, mozzarella, basil</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-item-price">$12.99</span>
+                                <button class="add-btn" onclick="addToCart('Margherita Pizza', 12.99)">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=200&h=200&fit=crop" alt="Pepperoni Pizza">
+                        <div class="menu-item-info">
+                            <h4 class="menu-item-name">Pepperoni Pizza</h4>
+                            <p class="menu-item-desc">Pepperoni, mozzarella, tomato sauce</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-item-price">$14.99</span>
+                                <button class="add-btn" onclick="addToCart('Pepperoni Pizza', 14.99)">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1621996346223-a3a0219d7e96?w=200&h=200&fit=crop" alt="Carbonara Pasta">
+                        <div class="menu-item-info">
+                            <h4 class="menu-item-name">Carbonara Pasta</h4>
+                            <p class="menu-item-desc">Creamy sauce, bacon, parmesan</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-item-price">$15.99</span>
+                                <button class="add-btn" onclick="addToCart('Carbonara Pasta', 15.99)">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1572441713132-c542fc4fe282?w=200&h=200&fit=crop" alt="Caesar Salad">
+                        <div class="menu-item-info">
+                            <h4 class="menu-item-name">Caesar Salad</h4>
+                            <p class="menu-item-desc">Romaine lettuce, croutons, dressing</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-item-price">$9.99</span>
+                                <button class="add-btn" onclick="addToCart('Caesar Salad', 9.99)">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=200&h=200&fit=crop" alt="Tiramisu">
+                        <div class="menu-item-info">
+                            <h4 class="menu-item-name">Tiramisu</h4>
+                            <p class="menu-item-desc">Classic Italian dessert</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-item-price">$7.99</span>
+                                <button class="add-btn" onclick="addToCart('Tiramisu', 7.99)">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1579372786545-d24232daf58c?w=200&h=200&fit=crop" alt="Lasagna">
+                        <div class="menu-item-info">
+                            <h4 class="menu-item-name">Lasagna</h4>
+                            <p class="menu-item-desc">Layered pasta with meat sauce</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-item-price">$16.99</span>
+                                <button class="add-btn" onclick="addToCart('Lasagna', 16.99)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cart Button -->
+            <div class="cart-floating" id="cartFloating" onclick="goToScreen(4)">
+                <span class="cart-count" id="cartCount">0</span>
+                <span>View Cart</span>
+                <span class="cart-total" id="cartTotal">$0.00</span>
+            </div>
+        </div>
+
+        <!-- Screen 4: Checkout & Delivery -->
+        <div class="screen checkout-screen" id="screen4" style="display: none;">
+            <div class="status-bar">
+                <span class="time">9:41</span>
+                <div class="status-icons">
+                    <span class="signal">📶</span>
+                    <span class="wifi">📡</span>
+                    <span class="battery">🔋</span>
+                </div>
+            </div>
+
+            <div class="header checkout-header">
+                <button class="back-btn-simple" onclick="goToScreen(3)">‹</button>
+                <h2 class="header-title">Checkout</h2>
+                <div style="width: 40px;"></div>
+            </div>
+
+            <div class="content checkout-content">
+                <!-- Delivery Address -->
+                <div class="checkout-section">
+                    <h3 class="section-heading">
+                        <span class="section-icon">📍</span>
+                        Delivery Address
+                    </h3>
+                    <div class="address-card">
+                        <div class="address-info">
+                            <h4 class="address-label">Home</h4>
+                            <p class="address-text">123 Main Street, Apt 4B<br>Downtown, NY 10001</p>
+                        </div>
+                        <button class="change-btn">Change</button>
+                    </div>
+                </div>
+
+                <!-- Order Items -->
+                <div class="checkout-section">
+                    <h3 class="section-heading">
+                        <span class="section-icon">🛒</span>
+                        Order Items
+                    </h3>
+                    <div id="checkoutItems" class="checkout-items">
+                        <!-- Items will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Payment Method -->
+                <div class="checkout-section">
+                    <h3 class="section-heading">
+                        <span class="section-icon">💳</span>
+                        Payment Method
+                    </h3>
+                    <div class="payment-methods">
+                        <div class="payment-option selected">
+                            <input type="radio" name="payment" checked>
+                            <span class="payment-icon">💳</span>
+                            <span class="payment-text">Credit Card •••• 4242</span>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" name="payment">
+                            <span class="payment-icon">💵</span>
+                            <span class="payment-text">Cash on Delivery</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="checkout-section">
+                    <h3 class="section-heading">Order Summary</h3>
+                    <div class="order-summary">
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="subtotal">$0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Delivery Fee</span>
+                            <span>$2.99</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Tax</span>
+                            <span id="tax">$0.00</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total</span>
+                            <span id="total">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="place-order-btn" onclick="placeOrder()">Place Order</button>
+            </div>
+        </div>
+
+        <!-- Screen 5: Order Tracking -->
+        <div class="screen tracking-screen" id="screen5" style="display: none;">
+            <div class="status-bar">
+                <span class="time">9:41</span>
+                <div class="status-icons">
+                    <span class="signal">📶</span>
+                    <span class="wifi">📡</span>
+                    <span class="battery">🔋</span>
+                </div>
+            </div>
+
+            <div class="header">
+                <button class="back-btn-simple" onclick="goToScreen(2)">‹</button>
+                <h2 class="header-title">Order Tracking</h2>
+                <div style="width: 40px;"></div>
+            </div>
+
+            <div class="content tracking-content">
+                <!-- Map Placeholder -->
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <div class="delivery-marker">📍</div>
+                        <div class="route-line"></div>
+                        <div class="restaurant-marker">🏪</div>
+                    </div>
+                </div>
+
+                <!-- Delivery Info Card -->
+                <div class="delivery-info-card">
+                    <div class="delivery-status">
+                        <h3 class="delivery-status-title">On the way</h3>
+                        <p class="delivery-status-time">Arriving in 15-20 minutes</p>
+                    </div>
+
+                    <!-- Progress Steps -->
+                    <div class="progress-steps">
+                        <div class="progress-step completed">
+                            <div class="step-icon">✓</div>
+                            <div class="step-info">
+                                <h4 class="step-title">Order Confirmed</h4>
+                                <p class="step-time">10:30 AM</p>
+                            </div>
+                        </div>
+
+                        <div class="progress-step completed">
+                            <div class="step-icon">✓</div>
+                            <div class="step-info">
+                                <h4 class="step-title">Preparing Food</h4>
+                                <p class="step-time">10:45 AM</p>
+                            </div>
+                        </div>
+
+                        <div class="progress-step active">
+                            <div class="step-icon">🚚</div>
+                            <div class="step-info">
+                                <h4 class="step-title">Out for Delivery</h4>
+                                <p class="step-time">In Progress</p>
+                            </div>
+                        </div>
+
+                        <div class="progress-step">
+                            <div class="step-icon">📦</div>
+                            <div class="step-info">
+                                <h4 class="step-title">Delivered</h4>
+                                <p class="step-time">Pending</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delivery Person -->
+                    <div class="delivery-person">
+                        <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=100&h=100&fit=crop" alt="Driver">
+                        <div class="driver-info">
+                            <h4 class="driver-name">Mike Wilson</h4>
+                            <p class="driver-vehicle">Honda Civic • ABC 1234</p>
+                            <div class="driver-rating">⭐ 4.9 (1,234 deliveries)</div>
+                        </div>
+                        <div class="contact-btns">
+                            <button class="contact-btn">📞</button>
+                            <button class="contact-btn">💬</button>
+                        </div>
+                    </div>
+
+                    <!-- Order Details -->
+                    <div class="tracking-order-details">
+                        <h4 class="details-heading">Order Details</h4>
+                        <div class="detail-row">
+                            <span>Order ID:</span>
+                            <span>#FH-2025-0001</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Restaurant:</span>
+                            <span>Italian House</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Total Amount:</span>
+                            <span class="detail-price" id="trackingTotal">$45.97</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 6: Order Complete (Transition Screen) -->
+        <div class="screen complete-screen" id="screen6" style="display: none;">
+            <div class="complete-container">
+                <div class="success-animation">
+                    <div class="success-circle">
+                        <div class="success-checkmark">✓</div>
+                    </div>
+                </div>
+                <h2 class="complete-title">Order Placed!</h2>
+                <p class="complete-message">Your order has been confirmed and is being prepared</p>
+                <button class="track-order-btn" onclick="goToScreen(5)">Track Order</button>
+                <button class="home-btn" onclick="goToScreen(2)">Back to Home</button>
+            </div>
+        </div>
+
+        <!-- Screen 7: Dashboard -->
+        <div class="screen dashboard-screen" id="screen7" style="display: none;">
+            <div class="status-bar">
+                <span class="time">9:41</span>
+                <div class="status-icons">
+                    <span class="signal">📶</span>
+                    <span class="wifi">📡</span>
+                    <span class="battery">🔋</span>
+                </div>
+            </div>
+
+            <div class="header">
+                <button class="menu-btn" onclick="toggleMenu()">☰</button>
+                <h2 class="header-title">Dashboard</h2>
+                <div class="profile-pic">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="Profile">
+                </div>
+            </div>
+
+            <div class="content dashboard-content">
+                <div class="welcome-card">
+                    <h2 class="welcome-title">Hello, Alex! 👋</h2>
+                    <p class="welcome-text">What would you like to eat today?</p>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #ff6b9d, #ff4081);">
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="white">
+                                <path d="M15 5L20 20H10L15 5Z" fill="white"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <h3 class="stat-value">28</h3>
+                            <p class="stat-label">Total Orders</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #5dd3c7, #4ec5b9);">
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="white">
+                                <circle cx="15" cy="15" r="10" fill="white"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <h3 class="stat-value">2</h3>
+                            <p class="stat-label">In Progress</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #ffd93d, #ffb300);">
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="white">
+                                <path d="M15 5l3 9h9l-7 5 3 9-8-6-8 6 3-9-7-5h9z" fill="white"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <h3 class="stat-value">12</h3>
+                            <p class="stat-label">Favorites</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Orders -->
+                <div class="section-header">
+                    <h3 class="section-title">Recent Orders</h3>
+                    <a href="#" class="view-all">View all</a>
+                </div>
+
+                <div class="order-history">
+                    <div class="history-card">
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=150&h=150&fit=crop" alt="Pizza">
+                        <div class="history-info">
+                            <h4 class="history-restaurant">Italian House</h4>
+                            <p class="history-items">Margherita Pizza, Caesar Salad</p>
+                            <p class="history-date">Today, 2:30 PM</p>
+                        </div>
+                        <div class="history-status">
+                            <span class="status-badge delivered">Delivered</span>
+                            <span class="history-price">$22.98</span>
+                        </div>
+                    </div>
+
+                    <div class="history-card">
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=150&h=150&fit=crop" alt="Burger">
+                        <div class="history-info">
+                            <h4 class="history-restaurant">Burger Palace</h4>
+                            <p class="history-items">Cheeseburger, Fries, Coke</p>
+                            <p class="history-date">Yesterday, 7:15 PM</p>
+                        </div>
+                        <div class="history-status">
+                            <span class="status-badge delivered">Delivered</span>
+                            <span class="history-price">$18.50</span>
+                        </div>
+                    </div>
+
+                    <div class="history-card">
+                        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=150&h=150&fit=crop" alt="Sushi">
+                        <div class="history-info">
+                            <h4 class="history-restaurant">Sushi Master</h4>
+                            <p class="history-items">Salmon Roll, Tuna Roll</p>
+                            <p class="history-date">Dec 27, 1:00 PM</p>
+                        </div>
+                        <div class="history-status">
+                            <span class="status-badge delivered">Delivered</span>
+                            <span class="history-price">$32.99</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Favorite Restaurants -->
+                <div class="section-header" style="margin-top: 32px;">
+                    <h3 class="section-title">Favorite Restaurants</h3>
+                    <a href="#" class="view-all">View all</a>
+                </div>
+
+                <div class="favorites-grid">
+                    <div class="favorite-card" onclick="goToScreen(3)">
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200&h=150&fit=crop" alt="Italian House">
+                        <h4 class="favorite-name">Italian House</h4>
+                        <p class="favorite-cuisine">Italian • Pizza</p>
+                    </div>
+
+                    <div class="favorite-card" onclick="goToScreen(3)">
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=200&h=150&fit=crop" alt="Burger Palace">
+                        <h4 class="favorite-name">Burger Palace</h4>
+                        <p class="favorite-cuisine">American • Burgers</p>
+                    </div>
+
+                    <div class="favorite-card" onclick="goToScreen(3)">
+                        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=200&h=150&fit=crop" alt="Sushi Master">
+                        <h4 class="favorite-name">Sushi Master</h4>
+                        <p class="favorite-cuisine">Japanese • Sushi</p>
+                    </div>
+
+                    <div class="favorite-card" onclick="goToScreen(3)">
+                        <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=200&h=150&fit=crop" alt="Thai Spice">
+                        <h4 class="favorite-name">Thai Spice</h4>
+                        <p class="favorite-cuisine">Thai • Asian</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-nav">
+                <button class="nav-btn" onclick="goToScreen(2)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                    </svg>
+                    <span class="nav-label">Home</span>
+                </button>
+                <button class="nav-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="m21 21-4.35-4.35"/>
+                    </svg>
+                    <span class="nav-label">Search</span>
+                </button>
+                <button class="nav-btn" onclick="goToScreen(5)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 2L7.17 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2h-3.17L15 2H9z"/>
+                        <circle cx="12" cy="13" r="3"/>
+                    </svg>
+                    <span class="nav-label">Orders</span>
+                </button>
+                <button class="nav-btn active" onclick="goToScreen(7)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <rect x="3" y="3" width="7" height="7"/>
+                        <rect x="14" y="3" width="7" height="7"/>
+                        <rect x="3" y="14" width="7" height="7"/>
+                        <rect x="14" y="14" width="7" height="7"/>
+                    </svg>
+                    <span class="nav-label">More</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="food-app-script.js"></script>
+</body>
+</html>
