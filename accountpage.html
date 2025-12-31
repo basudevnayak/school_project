@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Food App</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f6f6f6;
+  padding-bottom: 72px;
+}
+
+.hidden { display: none; }
+
+/* HEADER */
+.header {
+  background: #fff;
+  padding: 14px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.header-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* LIST */
+.list {
+  background: #fff;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.list-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  width: 22px;
+  text-align: center;
+  color: #e86a00;
+}
+
+/* SIGN OUT */
+.signout {
+  margin: 30px 0 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+}
+
+.footer-links {
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+}
+
+/* BOTTOM NAV */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background: #fff;
+  display: flex;
+  border-top: 1px solid #eaeaea;
+}
+
+.nav-item {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  color: #777;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.nav-item.active {
+  color: #e86a00;
+  font-weight: 600;
+}
+
+.nav-item span {
+  font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HOME (Placeholder) -->
+<div id="homePage">
+  <div class="header">
+    <div class="header-title">Home</div>
+  </div>
+  <div class="list-item">Home Content</div>
+</div>
+
+<!-- OFFER (Placeholder) -->
+<div id="offerPage" class="hidden">
+  <div class="header">
+    <div class="header-title">Offers</div>
+  </div>
+  <div class="list-item">Offer Content</div>
+</div>
+
+<!-- ACCOUNT PAGE -->
+<div id="accountPage" class="hidden">
+
+  <div class="header">
+    <div class="header-title">My Account</div>
+  </div>
+
+  <div class="list">
+    <div class="list-item">
+      <div class="list-left">
+        <div class="icon">👤</div>
+        Profile
+      </div>
+      ➤
+    </div>
+
+    <div class="list-item">
+      <div class="list-left">
+        <div class="icon">📍</div>
+        Addresses
+      </div>
+      ➤
+    </div>
+
+    <div class="list-item">
+      <div class="list-left">
+        <div class="icon">💳</div>
+        Payment
+      </div>
+      ➤
+    </div>
+
+    <div class="list-item">
+      <div class="list-left">
+        <div class="icon">📦</div>
+        Orders
+      </div>
+      ➤
+    </div>
+
+    <div class="list-item">
+      <div class="list-left">
+        <div class="icon">💰</div>
+        Credits
+      </div>
+      ➤
+    </div>
+  </div>
+
+  <div class="signout">↩ Sign Out</div>
+
+  <div class="footer-links">
+    Terms of Use · Privacy Policy<br/>
+    App version v1.0.0
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <div class="nav-item" onclick="goHome(this)">
+    <span>🏠</span>Home
+  </div>
+  <div class="nav-item" onclick="goOffer(this)">
+    <span>🎁</span>Offer
+  </div>
+  <div class="nav-item" onclick="goAccount(this)">
+    <span>👤</span>Account
+  </div>
+</div>
+
+<script>
+function resetNav(el){
+  document.querySelectorAll('.nav-item')
+    .forEach(i => i.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function hideAll(){
+  homePage.classList.add('hidden');
+  offerPage.classList.add('hidden');
+  accountPage.classList.add('hidden');
+}
+
+function goHome(el){
+  resetNav(el);
+  hideAll();
+  homePage.classList.remove('hidden');
+}
+
+function goOffer(el){
+  resetNav(el);
+  hideAll();
+  offerPage.classList.remove('hidden');
+}
+
+function goAccount(el){
+  resetNav(el);
+  hideAll();
+  accountPage.classList.remove('hidden');
+}
+</script>
+
+</body>
+</html>

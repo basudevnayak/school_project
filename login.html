@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account</title>
+
+<style>
+  * {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 380px;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 500;
+    color: #4b2e1e;
+    margin-bottom: 8px;
+  }
+
+  h1 span {
+    font-weight: 600;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 32px;
+  }
+
+  .subtitle a {
+    color: #e86a00;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .input-group {
+    position: relative;
+    margin-bottom: 30px;
+  }
+
+  .input-group input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    font-size: 15px;
+    outline: none;
+  }
+
+  .input-group label {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    font-size: 14px;
+    color: #aaa;
+    pointer-events: none;
+  }
+
+  .input-group input:focus + label,
+  .input-group input:valid + label {
+    display: none;
+  }
+
+  .password-toggle {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #aaa;
+  }
+
+  button {
+    width: 100%;
+    background: #e86a00;
+    color: #fff;
+    border: none;
+    padding: 14px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+
+  button:hover {
+    opacity: 0.95;
+  }
+
+  /* Sign In view */
+  .hidden {
+    display: none;
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 16px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- SIGN UP -->
+  <div id="signupView">
+    <h1>Create a <span>account</span></h1>
+    <p class="subtitle">
+      Already have an account?
+      <a onclick="showLogin()">Sign In</a>
+    </p>
+
+    <form id="signupForm">
+      <div class="input-group">
+        <input type="email" id="su_email" required>
+        <label>Email</label>
+      </div>
+
+      <div class="input-group">
+        <input type="password" id="su_password" required>
+        <label>Password</label>
+        <span class="password-toggle" onclick="togglePassword('su_password')">👁</span>
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="firstName" required>
+        <label>First Name</label>
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="lastName" required>
+        <label>Last Name</label>
+      </div>
+
+      <button type="submit">CREATE AN ACCOUNT</button>
+    </form>
+  </div>
+
+  <!-- SIGN IN -->
+  <div id="loginView" class="hidden">
+    <h1>Sign <span>In</span></h1>
+    <p class="subtitle">
+      Don’t have an account?
+      <a onclick="showSignup()">Create Account</a>
+    </p>
+
+    <form id="loginForm">
+      <div class="input-group">
+        <input type="email" id="li_email" required>
+        <label>Email</label>
+      </div>
+
+      <div class="input-group">
+        <input type="password" id="li_password" required>
+        <label>Password</label>
+        <span class="password-toggle" onclick="togglePassword('li_password')">👁</span>
+      </div>
+
+      <button type="submit">SIGN IN</button>
+    </form>
+  </div>
+
+</div>
+
+<script>
+  const signupView = document.getElementById('signupView');
+  const loginView = document.getElementById('loginView');
+
+  function showLogin() {
+    signupView.classList.add('hidden');
+    loginView.classList.remove('hidden');
+  }
+
+  function showSignup() {
+    loginView.classList.add('hidden');
+    signupView.classList.remove('hidden');
+  }
+
+  function togglePassword(id) {
+    const input = document.getElementById(id);
+    input.type = input.type === 'password' ? 'text' : 'password';
+  }
+
+  // SIGN UP FETCH
+  document.getElementById('signupForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const payload = {
+      email: su_email.value,
+      password: su_password.value,
+      first_name: firstName.value,
+      last_name: lastName.value
+    };
+
+    try {
+      const res = await fetch('https://api.example.com/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (res.ok) {
+        alert('Account created successfully');
+        showLogin();
+      } else {
+        alert('Signup failed');
+      }
+    } catch {
+      alert('Server error');
+    }
+  });
+
+  // LOGIN FETCH
+  document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const payload = {
+      email: li_email.value,
+      password: li_password.value
+    };
+
+    try {
+      const res = await fetch('https://api.example.com/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (res.ok) {
+        alert('Login successful');
+      } else {
+        alert('Invalid credentials');
+      }
+    } catch {
+      alert('Server error');
+    }
+  });
+</script>
+
+</body>
+</html>
