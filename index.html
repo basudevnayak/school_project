@@ -3190,10 +3190,20 @@
 
   <!-- HOME (FOOD LISTING) -->
   <div id="home" class="hidden">
-    <div style="width:100%;max-width:350px;padding:12px;background:#fff;margin:auto; position:fixed;        z-index:9999;        top:83vh;        left:29%;
-        display:flex;        justify-content:space-between;        align-items:center;   /* ✅ THIS centers left & right vertically */
-        border:1px solid var(--primary-color);        border-radius:8px; display: none;
-  " onclick="openCart()" id="cartBadge">
+    <div style=" width: 100%;
+    max-width: 350px;
+    padding: 12px;
+    background: #fff;
+    position: fixed;
+    z-index: 9999;
+    bottom: 100px;                 /* ✅ fixed bottom */
+    left: 50%;                    /* ✅ center horizontally */
+    transform: translateX(-50%);  /* ✅ perfect centering */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;" onclick="openCart()" id="cartBadge">
       <div class="card-left" style="">
         <img src="https://upload.wikimedia.org/wikipedia/sco/thumb/b/bf/KFC_logo.svg/2048px-KFC_logo.svg.png">
         <div class="card-left-text">
@@ -3373,15 +3383,20 @@
       margin: auto;
       position: fixed;
       z-index: 9999;
-      top: 83vh;
-      left: 29%;
+      width: 100%;
+      max-width: 350px;
+      padding: 12px;
+      background: #fff;
+      position: fixed;
+      z-index: 9999;
+      bottom: 100px;                 /* ✅ fixed bottom */
+      left: 50%;                    /* ✅ center horizontally */
+      transform: translateX(-50%);  /* ✅ perfect centering */
       display: flex;
       justify-content: space-between;
       align-items: center;
-      /* ✅ THIS centers left & right vertically */
       border: 1px solid var(--primary-color);
       border-radius: 8px;
-      display: none;
 
     }
   </style>
