@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <title>Food App</title>
 
   <style>
@@ -35,6 +36,38 @@
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
+
+    .date-info {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.date-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-label {
+  font-size: 10px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.date-value {
+  font-size: 12px;
+  color: #333;
+  font-weight: 600;
+}
+
+.date-value.expiry {
+  color: #e11d48;
+}
+
+.date-value.production {
+  color: #16a34a;
+}
     body {
       margin: 0;
       /* background: linear-gradient(180deg, #F8F9FA 0%, #FFFFFF 100%); */
@@ -98,7 +131,7 @@
       margin-top: 12px;
       background: var(--bg-tertiary);
       border-radius: var(--radius-xl);
-      padding: 14px 16px;
+      /* padding: 14px 16px; */
       display: flex;
       align-items: center;
       gap: 10px;
@@ -826,13 +859,14 @@
     .search-box {
       display: flex;
       align-items: center;
-      gap: 12px;
+      /* gap: 12px; */
       background: var(--bg-primary);
       border-radius: var(--radius-md);
-      padding: 16px;
+      padding: 10px;
       border: 2px solid var(--border-color);
       transition: var(--transition);
       box-shadow: var(--shadow-sm);
+      height: 60px;
     }
 
     .search-box:focus-within {
@@ -1068,10 +1102,12 @@
     /* Smooth Page Transitions */
     #home,
     #offers,
+    #impact,
     #orders,
     #account,
     #profile,
     #addresses,
+    #donate,
     #addAddress {
       animation: fadeIn 0.3s ease-in-out;
     }
@@ -1267,8 +1303,8 @@
 
     .cart-badge {
       position: absolute;
-      top: -35px;
-      right: 20px;
+      top: 8px;
+      right: 11px;
       background: var(--primary-color);
       color: #fff;
       border-radius: 50%;
@@ -2396,9 +2432,687 @@
       }
     }
   </style>
+
+
+  <style>
+    /* MOBILE CONTAINER */
+    /* .app {
+  width: 100%;
+  max-width: 420px;
+  min-height: 100vh;
+} */
+
+    /* HEADER */
+
+
+
+    /* TOTAL IMPACT */
+    .total-impact {
+      margin: 14px;
+      padding: 16px;
+      background: linear-gradient(135deg, #16a34a, #22c55e);
+      border-radius: 10px;
+      color: #fff;
+      text-align: center;
+    }
+
+    .total-impact h4 {
+      font-size: 13px;
+    }
+
+    .total-impact h1 {
+      font-size: 24px;
+      margin: 6px 0;
+    }
+
+    .total-impact p {
+      font-size: 11px;
+    }
+
+    /* FLEX GRID */
+    .flex-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 0 14px;
+    }
+
+    .cardImp {
+      background: #fff;
+      border-radius: 10px;
+      padding: 12px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .06);
+
+      /* 2 cards per row */
+      width: calc(50% - 6px);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+    }
+
+    .card-header i {
+      font-size: 11px;
+      padding: 6px;
+      border-radius: 6px;
+    }
+
+    */ .blue {
+      background: #e8f0ff;
+      color: #2563eb;
+    }
+
+    .green {
+      background: #e9f8ef;
+      color: #16a34a;
+    }
+
+    .mint {
+      background: #e6fff6;
+      color: #10b981;
+    }
+
+    .orange {
+      background: #fff1e6;
+      color: #ea580c;
+    }
+
+    .card h3 {
+      margin: 8px 0 5px;
+      font-size: 18px;
+    }
+
+    .progress {
+      height: 3px;
+      background: #e5e7eb;
+      border-radius: 4px;
+    }
+
+    .card p {
+      font-size: 10px;
+      color: #777;
+      margin-top: 5px;
+    }
+
+    /* SECTION */
+    .section {
+      margin: 14px;
+    }
+
+    .section h4 {
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .empty {
+      background: #fff;
+      padding: 14px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 11px;
+      color: #888;
+    }
+
+    /* INFO */
+    .info {
+      margin: 14px;
+      padding: 12px;
+      background: #f0fdf4;
+      border-radius: 10px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .info i {
+      color: #16a34a;
+      font-size: 18px;
+    }
+
+    .info p {
+      font-size: 11px;
+      margin: 0;
+    }
+
+    /* SMALL DEVICES (auto wrap to 1 card) */
+    @media (max-width: 320px) {
+      .card {
+        width: 100%;
+      }
+    }
+  </style>
+
+
+
+  <style>
+    /* CARD */
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 14px;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, .06);
+    }
+
+    /* INFO CARD */
+    .info-card {
+      background: #ecfdf5;
+      border: 1px solid #d1fae5;
+    }
+
+    h3 {
+      margin: 0 0 6px;
+      font-size: 16px;
+    }
+
+    p {
+      margin: 0;
+      font-size: 13px;
+      color: #555;
+    }
+
+    /* UPLOAD */
+    .upload-box {
+      border: 2px dashed #d1d5db;
+      border-radius: 10px;
+      padding: 36px 16px;
+      text-align: center;
+      color: #6b7280;
+    }
+
+    .upload-box i {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    /* BUTTON */
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-green {
+      background: #16a34a;
+      color: #fff;
+    }
+
+    .btn-light {
+      background: #86cf9a;
+      color: #fff;
+    }
+
+    /* IMAGE PREVIEW */
+    .preview-img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    /* FORM */
+    label {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      margin-top: 4px;
+      margin-bottom: 12px;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #e5e7eb;
+      font-size: 13px;
+    }
+
+    /* PAYMENT HEADER */
+    .pay-header {
+      background: linear-gradient(135deg, #16a34a, #22c55e);
+      color: #fff;
+      text-align: center;
+      padding: 22px;
+      border-radius: 12px;
+    }
+
+    .pay-header i {
+      font-size: 32px;
+      margin-bottom: 6px;
+    }
+
+    .pay-header h2 {
+      margin: 6px 0;
+    }
+
+    .pay-header h1 {
+      margin: 6px 0 0;
+    }
+
+    /* FLEX ROW */
+    .row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    /* STEP CONTROL */
+    .step {
+      display: none;
+      padding: 20px
+    }
+
+    .step.active {
+      display: block;
+    }
+  </style>
+
+  <style>
+    /* MAIN CARD */
+    .checkout-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, .12);
+    }
+
+    /* LEFT */
+    .card-left {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .card-left img {
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+    }
+
+    .card-left-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-left-text b {
+      font-size: 14px;
+    }
+
+    .view-menu {
+      font-size: 12px;
+      color: #e11d48;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* RIGHT PILL */
+    .checkout-pill {
+      background: #e11d48;
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .checkout-pill span {
+      opacity: 0.9;
+    }
+
+    .checkout-pill i {
+      font-size: 12px;
+    }
+  </style>
+
+
+  <style>
+    .app {
+      /* width: 100%;
+    max-width: 420px;
+    background: #fff;
+    min-height: 95vh;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative; */
+    }
+
+    /* Header */
+    .headerD {
+      background: linear-gradient(to right, #e11d48, #ff4757);
+      color: white;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .time-display {
+      font-size: 14px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    /* MAP */
+    .map-wrapper {
+      position: relative;
+      height: 280px;
+      background: #333;
+    }
+
+    .map-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: grayscale(20%) contrast(1.1);
+    }
+
+    .map-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    /* DRONE */
+    .drone {
+      position: absolute;
+      top: 45%;
+      left: 35%;
+      font-size: 32px;
+      animation: fly 2.5s ease-in-out infinite;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+      z-index: 10;
+    }
+
+    @keyframes fly {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      25% {
+        transform: translateY(-12px) rotate(-2deg);
+      }
+
+      50% {
+        transform: translateY(-5px) rotate(0deg);
+      }
+
+      75% {
+        transform: translateY(-15px) rotate(2deg);
+      }
+
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+    }
+
+    .drone-path {
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      width: 80%;
+      height: 2px;
+      background: rgba(225, 29, 72, 0.3);
+      z-index: 1;
+    }
+
+    .drone-path::before {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: 0;
+      width: 10px;
+      height: 10px;
+      background: #e11d48;
+      border-radius: 50%;
+    }
+
+    .drone-path::after {
+      content: '';
+      position: absolute;
+      top: -4px;
+      right: 0;
+      width: 10px;
+      height: 10px;
+      background: #16a34a;
+      border-radius: 50%;
+    }
+
+    /* STATUS CARD */
+    .status-card {
+      margin: -30px 16px 16px;
+      background: #fff;
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      position: relative;
+      z-index: 5;
+    }
+
+    /* TIME ROW */
+    .time-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .on-time {
+      color: #16a34a;
+      background: rgba(22, 163, 74, 0.1);
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+    }
+
+    .estimated-time {
+      color: #555;
+    }
+
+    /* PROGRESS BAR */
+    .progress-icons {
+      display: flex;
+      align-items: center;
+      margin: 20px 0 10px;
+      position: relative;
+    }
+
+    .progress-icons span {
+      font-size: 20px;
+      background: white;
+      border-radius: 50%;
+      padding: 8px;
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
+
+    .progress-icons .active-icon {
+      transform: scale(1.2);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .line {
+      flex: 1;
+      height: 3px;
+      background: #e0e0e0;
+      margin: 0 2px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .line.active {
+      background: #e11d48;
+    }
+
+    .line.active::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 30%;
+      background: rgba(255, 255, 255, 0.6);
+      animation: shimmer 1.5s infinite;
+    }
+
+    @keyframes shimmer {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    /* STATUS TEXT */
+    .status-text {
+      font-size: 15px;
+      color: #333;
+      margin-top: 16px;
+      padding: 12px;
+      background: #f9f9f9;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .status-text .highlight {
+      color: #e11d48;
+      font-weight: 600;
+    }
+
+    /* DRONE INFO */
+    .drone-info {
+      margin: 16px;
+      background: linear-gradient(to right, #f8f9fa, #f1f3f5);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s;
+    }
+
+    .drone-info:hover {
+      transform: translateY(-2px);
+    }
+
+    .drone-info i {
+      font-size: 28px;
+      color: #e11d48;
+    }
+
+    .drone-details {
+      flex: 1;
+    }
+
+    .drone-info b {
+      color: #e11d48;
+      font-size: 16px;
+    }
+
+    .serial-number {
+      font-size: 12px;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    /* Controls */
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      padding: 16px;
+      border-top: 1px solid #eee;
+    }
+
+    .control-btn {
+      background: #f8f9fa;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 12px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #555;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .control-btn:hover {
+      background: #e9ecef;
+      transform: translateY(-2px);
+    }
+
+    .control-btn.primary {
+      background: #e11d48;
+      color: white;
+      border-color: #e11d48;
+    }
+
+    .control-btn.primary:hover {
+      background: #c21845;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      font-size: 11px;
+      color: #888;
+      padding: 16px;
+      border-top: 1px solid #eee;
+    }
+
+    /* Animation for status update */
+    @keyframes pulse {
+      0% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.7;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .updating {
+      animation: pulse 1s infinite;
+    }
+  </style>
 </head>
 
 <body>
+
 
   <!-- LOGIN PAGE -->
   <div id="login">
@@ -2465,10 +3179,35 @@
 
   <!-- HOME (FOOD LISTING) -->
   <div id="home" class="hidden">
+    <div style="width:100%;max-width:350px;padding:12px;background:#fff;margin:auto; position:fixed;        z-index:9999;        top:83vh;        left:8%;
+        display:flex;        justify-content:space-between;        align-items:center;   /* ✅ THIS centers left & right vertically */
+        border:1px solid var(--primary-color);        border-radius:8px; display: none;
+  " onclick="openCart()" id="cartBadge">
+      <div class="card-left" style="">
+        <img src="https://upload.wikimedia.org/wikipedia/sco/thumb/b/bf/KFC_logo.svg/2048px-KFC_logo.svg.png">
+        <div class="card-left-text">
+          <b>KFC</b>
+          <span class="view-menu">View menu</span>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="checkout-pill">
+        <!-- <span>₹ 29</span> -->
+        <span>Checkout</span>
+        <i>›</i>
+      </div>
+    </div>
     <div class="header">
-      <div class="location" onclick="openLocationPicker()">📍 Location of Camp</div>
-      <div class="search-box">🔍 <input placeholder="Search cuisines"></div>
-      <div class="filters"><span class="chip">⚡ Near & Quick</span></div>
+      <div style="display: flex; justify-content: space-between;">
+        <div class="location" onclick="openLocationPicker()">📍 Location of Camp</div>
+        <!-- <div onclick="openCart()">
+          <span>🛒</span>
+          <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
+        </div> -->
+      </div>
+      <div class="search-box">🔍 <input placeholder="Search Restaurant"></div>
+      <div class="filters"><span class="chip">⚡ Cusine</span></div>
     </div>
 
     <div class="list">
@@ -2480,6 +3219,16 @@
           <div class="card-info">
             <div class="time">⚡ 20–30 mins</div>
             <div class="rating">★ 4.4</div>
+          </div>
+          <div class="date-info">
+            <div class="date-item">
+              <div class="date-label">Production Date</div>
+              <div class="date-value production">19 Nov 2025</div>
+            </div>
+            <div class="date-item">
+              <div class="date-label">Expiry Date</div>
+              <div class="date-value expiry">26 Nov 2026</div>
+            </div>
           </div>
         </div>
       </div>
@@ -2495,6 +3244,16 @@
             <div class="time">⚡ 20–30 mins</div>
             <div class="rating">★ 4.4</div>
           </div>
+          <div class="date-info">
+            <div class="date-item">
+              <div class="date-label">Production Date</div>
+              <div class="date-value production">19 Nov 2025</div>
+            </div>
+            <div class="date-item">
+              <div class="date-label">Expiry Date</div>
+              <div class="date-value expiry">26 Nov 2026</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -2507,6 +3266,16 @@
           <div class="card-info">
             <div class="time">⚡ 20–30 mins</div>
             <div class="rating">★ 4.4</div>
+          </div>
+          <div class="date-info">
+            <div class="date-item">
+              <div class="date-label">Production Date</div>
+              <div class="date-value production">19 Nov 2025</div>
+            </div>
+            <div class="date-item">
+              <div class="date-label">Expiry Date</div>
+              <div class="date-value expiry">26 Nov 2026</div>
+            </div>
           </div>
         </div>
       </div>
@@ -2521,9 +3290,20 @@
             <div class="time">⚡ 20–30 mins</div>
             <div class="rating">★ 4.4</div>
           </div>
+          <div class="date-info">
+            <div class="date-item">
+              <div class="date-label">Production Date</div>
+              <div class="date-value production">19 Nov 2025</div>
+            </div>
+            <div class="date-item">
+              <div class="date-label">Expiry Date</div>
+              <div class="date-value expiry">26 Nov 2026</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
   </div>
 
   <!-- OFFERS -->
@@ -2557,7 +3337,7 @@
     <div class="pin">📍</div>
 
     <!-- CURRENT LOCATION -->
-    <div class="current-location" >
+    <div class="current-location">
       ⊕ Use current location
     </div>
 
@@ -2573,8 +3353,44 @@
     </div>
   </div>
 
+  <style>
+    .cartMenu {
+      width: 100%;
+      max-width: 350px;
+      padding: 12px;
+      background: #fff;
+      margin: auto;
+      position: fixed;
+      z-index: 9999;
+      top: 83vh;
+      left: 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      /* ✅ THIS centers left & right vertically */
+      border: 1px solid var(--primary-color);
+      border-radius: 8px;
+      display: none;
 
+    }
+  </style>
   <div id="offers" class="hidden">
+    <div class="cartMenu" onclick="openCart()" id="cartBadge1">
+      <div class="card-left" style="">
+        <img src="https://upload.wikimedia.org/wikipedia/sco/thumb/b/bf/KFC_logo.svg/2048px-KFC_logo.svg.png">
+        <div class="card-left-text">
+          <b>KFC</b>
+          <span class="view-menu">View menu</span>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="checkout-pill">
+        <!-- <span>₹ 29</span> -->
+        <span>Checkout</span>
+        <i>›</i>
+      </div>
+    </div>
     <div class="headerOrder">
       <div class="back" onclick="goHome()">←</div>
       <div class="header-title">KFC • Top Offers</div>
@@ -2628,6 +3444,160 @@
       </div>
     </div>
   </div>
+
+  <div id="impact" class="hidden" style="height: 200px;background: linear-gradient(135deg, #e6f7f0, #f4fff9); ">
+    <div class="headerOrder">
+      <div class="back" onclick="goHome()">←</div>
+      <div class="header-title">Impact</div>
+    </div>
+
+    <div class="" style="text-align: center; margin-top:30px;">
+      <div style="
+      color: var(--primary-color);"><i class="fa-solid fa-seedling"></i></div>
+      <h2>Your Impact</h2>
+      <p>Track the difference we're making together</p>
+    </div>
+
+    <div class="total-impact">
+      <h4>Total Community Impact</h4>
+      <h1>AED 0</h1>
+      <p>Donated to feed labor workers</p>
+    </div>
+
+    <!-- FLEX WRAP GRID -->
+    <div class="flex-grid">
+      <div class="cardImp">
+        <div class="card-header">Meals Donated <i class="fa-solid fa-bowl-food blue"></i></div>
+        <h3>0</h3>
+        <div class="progress"></div>
+        <p>1,000 meals goal</p>
+      </div>
+
+      <div class="cardImp">
+        <div class="card-header">People Fed <i class="fa-solid fa-user-group green"></i></div>
+        <h3>0</h3>
+        <div class="progress"></div>
+        <p>Feeding the community</p>
+      </div>
+
+      <div class="cardImp">
+        <div class="card-header">Food Waste Reduced <i class="fa-solid fa-leaf mint"></i></div>
+        <h3>0.0 kg</h3>
+        <div class="progress"></div>
+        <p>500kg reduction target</p>
+      </div>
+
+      <div class="cardImp">
+        <div class="card-header">Carbon Saved <i class="fa-solid fa-chart-line orange"></i></div>
+        <h3 style="color:#ea580c">0.0 kg</h3>
+        <div class="progress"></div>
+        <p>1,000kg CO₂ saved</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h4>Recent Deliveries</h4>
+      <div class="empty">No deliveries yet</div>
+    </div>
+
+    <div class="info">
+      <i class="fa-solid fa-solar-panel"></i>
+      <p><b>Solar-Powered Delivery</b><br>Eco-friendly deliveries reducing carbon footprint.</p>
+    </div>
+
+  </div>
+
+  <div class="app" id="donate" class="hidden">
+    <div class="headerOrder">
+      <div class="back" onclick="goHome()">←</div>
+      <div class="header-title">Impact</div>
+    </div>
+    <!-- STEP 1 -->
+    <div class="step active" id="step1">
+      <div class="card info-card">
+        <h3>Donate Food Items</h3>
+        <p>Upload a clear photo of your packaged food item showing production and expiry dates.</p>
+        <br>
+        <b>Processing Fee: AED 5</b>
+        <p>Covers quality verification and delivery logistics</p>
+      </div>
+
+      <div class="card">
+        <h3>Upload Food Image</h3>
+
+        <!-- Hidden file input -->
+        <input type="file" id="foodImageInput" accept="image/*" hidden onchange="previewSelectedImage(this)">
+
+        <!-- Upload box -->
+        <div class="upload-box" onclick="selectImage()">
+          <i class="fa-solid fa-camera"></i>
+          <p><b>Click to upload image</b></p>
+          <p>PNG, JPG up to 10MB</p>
+        </div>
+
+        <!-- Preview -->
+        <img id="step1Preview" class="preview-img">
+
+        <br>
+        <button class="btn btn-light" onclick="goStep(2)">
+          <i class="fa-solid fa-upload"></i> Analyze & Continue
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step" id="step2">
+      <div class="card">
+        <h3>Extracted Information</h3>
+
+        <!-- SAME IMAGE PREVIEW -->
+        <img id="step2Preview" class="preview-img" style="display:block">
+
+        <p><b>Product:</b> Basmati Rice</p>
+        <p><b>Package Condition:</b> Good</p>
+      </div>
+
+      <div class="card">
+        <h3>Your Details</h3>
+
+        <label>Your Name *</label>
+        <input placeholder="Enter your name">
+
+        <label>Quantity</label>
+        <input value="1">
+
+        <label>Additional Notes (Optional)</label>
+        <textarea placeholder="Any additional information..."></textarea>
+
+        <button class="btn btn-green" onclick="goStep(3)">
+          Continue to Payment
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step" id="step3">
+      <div class="pay-header">
+        <i class="fa-solid fa-circle-check"></i>
+        <h2>Ready to Donate!</h2>
+        <p>Your Basmati Rice will help feed workers in need</p>
+        <h1>AED 5.00</h1>
+        <p>Processing fee</p>
+      </div>
+
+      <div class="card">
+        <h3>Payment Summary</h3>
+        <div class="row"><span>Processing Fee</span><b>AED 5.00</b></div>
+        <div class="row"><span>Items</span><b>1</b></div>
+        <hr>
+        <div class="row"><b>Total</b><b style="color:#16a34a">AED 5.00</b></div>
+      </div>
+
+      <button class="btn btn-green" onclick="goHome()">
+        Confirm Payment & Donate
+      </button>
+    </div>
+  </div>
   <!-- ORDERS -->
   <div id="orders" class="hidden">
     <!-- <div class="header">
@@ -2645,51 +3615,94 @@
       <div class="header-title">Orders</div>
     </div>
 
-    <!-- TITLE -->
-    <div class="section">Placed Orders</div>
+    <div class="app">
 
-    <!-- ORDER 1 -->
-    <div class="order">
-      <img class="logo" src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec" alt="Sushi Cago"
-        loading="lazy">
-      <div class="order-body">
-        <div class="restaurant">Sushi Cago</div>
-        <div class="meta">24 Oct 2025 · 2 items · Đ 48.95</div>
-        <div class="actions">
-          <button class="order-again">Order again</button>
-          <div class="status delivered">Delivered</div>
+      <!-- Header -->
+      <!-- <div class="headerD">
+        <div>
+          <h1><i class="fas fa-shipping-fast"></i> Live Delivery</h1>
+          <div class="time-display">8:42 PM</div>
         </div>
-      </div>
-      <div class="arrow">›</div>
-    </div>
+        <div>
+          <i class="fas fa-user-circle" style="font-size: 32px;"></i>
+        </div>
+      </div> -->
 
-    <!-- ORDER 2 -->
-    <div class="order">
-      <img class="logo" src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" alt="Dave's Hot Chicken"
-        loading="lazy">
-      <div class="order-body">
-        <div class="restaurant">Dave's Hot Chicken</div>
-        <div class="meta">15 Oct 2025 · 1 item · Đ 42.00</div>
-        <div class="actions">
-          <button class="order-again">Order again</button>
-          <div class="status picked">Picked up</div>
+      <!-- MAP -->
+      <div class="map-wrapper">
+        <div class="map-overlay">
+          <div class="drone-path"></div>
+          <div class="drone">🚁</div>
         </div>
+        <iframe src="https://maps.google.com/maps?q=Dubai+Marina&z=15&output=embed"></iframe>
       </div>
-      <div class="arrow">›</div>
-    </div>
 
-    <!-- ORDER 3 -->
-    <div class="order">
-      <img class="logo" src="https://images.unsplash.com/photo-1550547660-d9450f859349" alt="Sushi Cago" loading="lazy">
-      <div class="order-body">
-        <div class="restaurant">Sushi Cago</div>
-        <div class="meta">10 Oct 2025 · 2 items · Đ 46.82</div>
-        <div class="actions">
-          <button class="order-again">Order again</button>
-          <div class="status delivered">Delivered</div>
+      <!-- STATUS CARD -->
+      <div class="status-card">
+
+        <!-- TIME -->
+        <div class="time-row">
+          <div class="estimated-time">Estimated: 8:35 PM – 08:45 PM</div>
+          <div class="on-time"><i class="fas fa-check-circle"></i> ON TIME</div>
         </div>
+
+        <!-- ICON PROGRESS -->
+        <div class="progress-icons">
+          <span class="active-icon">📱</span>
+          <div class="line active"></div>
+          <span>🍔</span>
+          <div class="line"></div>
+          <span>🚁</span>
+          <div class="line"></div>
+          <span>🏠</span>
+        </div>
+
+        <!-- STATUS -->
+        <div class="status-text">
+          Your delivery agent is <span class="highlight">on his way to the restaurant</span>. Order #DUB-4829
+        </div>
+
       </div>
-      <div class="arrow">›</div>
+
+      <!-- DRONE DELIVERY INFO -->
+      <div class="drone-info">
+        <i class="fas fa-helicopter"></i>
+        <div class="drone-details">
+          <div><b>Drone Delivery</b> • 8 minutes en route</div>
+          <div class="serial-number">Serial: DRONE-X229 • Tracking enabled</div>
+        </div>
+        <i class="fas fa-chevron-right" style="color: #999;"></i>
+      </div>
+
+      <!-- Delivery Details -->
+      <div class="drone-info">
+        <i class="fas fa-pizza-slice"></i>
+        <div class="drone-details">
+          <div><b>Pizza Palace</b> • Italian Cuisine</div>
+          <div class="serial-number">Order: 2x Margherita, 1x Garlic Bread</div>
+        </div>
+        <i class="fas fa-chevron-right" style="color: #999;"></i>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls">
+        <button class="control-btn" onclick="updateStatus()">
+          <i class="fas fa-sync-alt"></i> Refresh
+        </button>
+        <button class="control-btn" onclick="contactDriver()">
+          <i class="fas fa-phone-alt"></i> Contact
+        </button>
+        <button class="control-btn primary" onclick="viewDetails()">
+          <i class="fas fa-info-circle"></i> Details
+        </button>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>Live tracking powered by SkyDrop Technology</p>
+        <p>Delivery ID: DUB-4829-3FR • Last updated: <span id="updateTime">Just now</span></p>
+      </div>
+
     </div>
   </div>
 
@@ -3090,18 +4103,18 @@
   </div>
 
   <!-- BOTTOM NAV -->
-  <div class="bottom-nav">
+  <!-- <div class="bottom-nav">
     <div class="nav active" onclick="goHome()">
       <span>🏠</span>
       <span>Home</span>
     </div>
     <div class="nav" onclick="openOffers()">
       <span>🎁</span>
-      <span>Offer</span>
+      <span>Impact</span>
     </div>
     <div class="nav" onclick="openCart()" style="position: relative;">
       <span>🛒</span>
-      <span>Cart</span>
+      <span>Donate</span>
       <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
     </div>
     <div class="nav" onclick="openOrders()">
@@ -3110,6 +4123,34 @@
     </div>
     <div class="nav" onclick="openAccount()">
       <span>👤</span>
+      <span>Account</span>
+    </div>
+  </div> -->
+  <div class="bottom-nav">
+    <div class="nav active" onclick="goHome()">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </div>
+
+    <div class="nav" onclick="openImpact()">
+      <!-- <div class="nav" onclick="openOffers()"></div> -->
+      <i class="fa-solid fa-hand-holding-heart"></i>
+      <span>Impact</span>
+    </div>
+
+    <div class="nav" onclick="openDonate()">
+      <i class="fa-solid fa-hand-holding-dollar"></i>
+      <span>Donate</span>
+      <!-- <span class="cart-badge" id="cartBadge" style="display: none;">0</span> -->
+    </div>
+
+    <div class="nav" onclick="openOrders()">
+      <i class="fa-solid fa-box"></i>
+      <span>Orders</span>
+    </div>
+
+    <div class="nav" onclick="openAccount()">
+      <i class="fa-solid fa-user"></i>
       <span>Account</span>
     </div>
   </div>
@@ -3142,6 +4183,9 @@
       const loginEl = getEl('login');
       const signupEl = getEl('signup');
       const map_viewEl = getEl('map_view');
+      const impactEl = getEl('impact');
+      const donateEl = getEl('donate');
+
       if (homeEl) homeEl.style.display = "none";
       if (offersEl) offersEl.style.display = "none";
       if (ordersEl) ordersEl.style.display = "none";
@@ -3154,6 +4198,9 @@
       if (checkoutPaymentEl) checkoutPaymentEl.style.display = "none";
       if (checkoutSuccessEl) checkoutSuccessEl.style.display = "none";
       if (map_viewEl) map_viewEl.style.display = "none";
+      if (impactEl) impactEl.style.display = "none";
+      if (donateEl) donateEl.style.display = "none";
+
       // Note: login is handled separately in checkLoginStatus
     }
 
@@ -3172,11 +4219,34 @@
       updateCartBadge();
     }
 
+    function openImpact() {
+      hideAll();
+      const el = getEl('impact');
+      if (el) el.style.display = "block";
+      setNav(1);
+      updateCartBadge();
+      // Update product buttons to show current quantities
+      cart.forEach(item => {
+        updateProductButton(item.id);
+      });
+    }
+    function openDonate() {
+      hideAll();
+      const el = getEl('donate');
+      if (el) el.style.display = "block";
+      setNav(2);
+      updateCartBadge();
+      // Update product buttons to show current quantities
+      cart.forEach(item => {
+        updateProductButton(item.id);
+      });
+    }
+
     function openOffers() {
       hideAll();
       const el = getEl('offers');
       if (el) el.style.display = "block";
-      setNav(1);
+      // setNav(1);
       updateCartBadge();
       // Update product buttons to show current quantities
       cart.forEach(item => {
@@ -3225,7 +4295,7 @@
       hideAll();
       const el = getEl('cart');
       if (el) el.style.display = "block";
-      setNav(2);
+      // setNav(2);
       renderCart();
       updateCartBadge();
     }
@@ -3297,13 +4367,17 @@
     // Update cart badge
     function updateCartBadge() {
       const badge = document.getElementById('cartBadge');
+      const badge1 = document.getElementById('cartBadge1');
       const count = getCartCount();
+      console.log(badge)
       if (badge) {
         if (count > 0) {
-          badge.textContent = count;
+          // badge.textContent = count;
           badge.style.display = 'flex';
+          badge1.style.display = 'flex';
         } else {
           badge.style.display = 'none';
+          badge1.style.display = 'none';
         }
       }
     }
@@ -3832,6 +4906,30 @@
   `;
       document.head.appendChild(style);
     });
+    function goStep(step) {
+      document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+      document.getElementById('step' + step).classList.add('active');
+    }
+
+    /* Open file picker */
+    function selectImage() {
+      document.getElementById('foodImageInput').click();
+    }
+
+    /* Preview image in Step 1 & Step 2 */
+    function previewSelectedImage(input) {
+      const file = input.files[0];
+      if (!file || !file.type.startsWith('image/')) return;
+
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        document.getElementById('step1Preview').src = e.target.result;
+        document.getElementById('step1Preview').style.display = 'block';
+
+        document.getElementById('step2Preview').src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
   </script>
 
 </body>
