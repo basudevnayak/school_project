@@ -2756,7 +2756,7 @@
     }
 
     .card-left-text {
-      display: flex;
+      /* display: flex; */
       flex-direction: column;
     }
 
@@ -2775,13 +2775,14 @@
     .checkout-pill {
       background: #e11d48;
       color: #fff;
-      padding: 8px 14px;
-      border-radius: 20px;
+      padding: 8px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      /* gap: 10px; */
       font-size: 13px;
       font-weight: 600;
+      width: 100px;
     }
 
     .checkout-pill span {
@@ -2795,6 +2796,41 @@
 
 
   <style>
+    .custom-select {
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      cursor: pointer;
+      height: 34px;
+    }
+
+    .custom-options {
+      display: none;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      margin-top: 6px;
+      background: #fff;
+    }
+
+    .custom-options div {
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    .custom-options div:hover {
+      background: #f5f5f5;
+    }
+
+    .custom-options.show {
+      display: block;
+    }
+
     .app {
       /* width: 100%;
     max-width: 420px;
@@ -3222,10 +3258,12 @@
       </div>
 
       <!-- RIGHT -->
-      <div class="checkout-pill">
-        <!-- <span>₹ 29</span> -->
-        <span>Checkout</span>
-        <i>›</i>
+      <div class="checkout-pill" style="flex-direction: column">
+        <span id="cartPrice">Ð 29</span>
+        <div>
+          <span>Checkout</span>
+          <i>›</i>
+        </div>
       </div>
     </div>
     <!-- <div class="header">
@@ -3269,30 +3307,55 @@
         🔍 <input placeholder="Search Restaurant">
       </div>
 
-      <div style="display: flex; gap: 10px; justify-content: space-between;">
+      <div style="display: flex; gap: 10px; justify-content: space-between; align-items: center; margin-top: 10px;">
 
         <!-- Cuisine Dropdown -->
-        <div class="filters">
-          <select style="
-              /* padding: 6px 12px; */
+        <div style="position: relative; display: inline-block;">
+
+          <!-- Select Button -->
+          <div onclick="toggleCuisine()" style="
+              border: 1px solid #ddd;
               border-radius: 20px;
+              padding: 6px 12px;
               font-size: 13px;
               font-weight: 600;
-              border: 1px solid #ddd;
+              display: flex;
+              align-items: center;
+              gap: 8px;
               background: #fff;
               cursor: pointer;
-              outline: none;
-            " onchange="selectCuisine(this.value)">
-            <option value="">⚡ Cuisine</option>
-            <option value="north">North Indian</option>
-            <option value="south">South Indian</option>
-            <option value="chinese">Chinese</option>
-            <option value="fastfood">Fast Food</option>
-          </select>
+              min-width: 150px;
+            ">
+            <i class="fa-solid fa-bolt" style="color:#2e7d32;"></i>
+            <span id="selectedCuisine">Cuisine</span>
+            <i class="fa-solid fa-chevron-down" style="margin-left:auto;"></i>
+          </div>
+
+          <!-- Dropdown -->
+          <div id="cuisineOptions" style="
+              display: none;
+              position: absolute;
+              top: 110%;
+              left: 0;
+              width: 100%;
+              background: #fff;
+              border: 1px solid #ddd;
+              border-radius: 10px;
+              box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+              z-index: 999;
+            ">
+            <div style="padding:8px 12px; cursor:pointer;" onclick="selectCuisine('north')">North Indian</div>
+            <div style="padding:8px 12px; cursor:pointer;" onclick="selectCuisine('south')">South Indian</div>
+            <div style="padding:8px 12px; cursor:pointer;" onclick="selectCuisine('chinese')">Chinese</div>
+            <div style="padding:8px 12px; cursor:pointer;" onclick="selectCuisine('fastfood')">Fast Food</div>
+          </div>
+
         </div>
 
+
+
         <!-- Near & Quick -->
-        <div class="filters">
+        <div>
           <div class="chip" style="
               padding: 6px 12px;
               border-radius: 20px;
@@ -3500,11 +3563,12 @@
         </div>
       </div>
 
-      <!-- RIGHT -->
-      <div class="checkout-pill">
-        <!-- <span>₹ 29</span> -->
-        <span>Checkout</span>
-        <i>›</i>
+      <div class="checkout-pill" style="flex-direction: column">
+        <span id="cartPrice1">Ð 29</span>
+        <div>
+          <span>Checkout</span>
+          <i>›</i>
+        </div>
       </div>
     </div>
     <div class="headerOrder">
@@ -3834,7 +3898,7 @@
       </div>
     </div> -->
     <div class="header" style="display: flex; align-items: center; gap: 10px;">
-      <div class="back" onclick="openAccount()">←</div>
+      <div class="back" onclick="goHome()">←</div>
       <div class="header-title">Our heroes</div>
     </div>
 
@@ -3918,13 +3982,13 @@
         ➤
       </div>
 
-      <div class="list-item" onclick="openOrdersDelivery()">
+      <!-- <div class="list-item" onclick="openOrdersDelivery()">
         <div class="list-left">
           <div class="icon">📦</div>
           Orders
         </div>
         ➤
-      </div>
+      </div> -->
 
       <div class="list-item">
         <div class="list-left">
@@ -4192,6 +4256,9 @@
       <div class="header-title">Payment</div>
     </div>
     <!-- Dubai Location Dropdown -->
+
+
+
     <div class="checkout-section" style="margin:0px 26px;">
       <div class="section-title">Dubai Area</div>
 
@@ -4205,7 +4272,7 @@
       outline:none;
       cursor:pointer;
     ">
-        <option value="">Select Dubai Area</option>
+
         <option>Deira</option>
         <option>Bur Dubai</option>
         <option>Karama</option>
@@ -4221,7 +4288,7 @@
 
     <div class="checkout-content">
       <!-- Order Summary -->
-      <div class="order-summary-card">
+      <!-- <div class="order-summary-card">
         <div class="summary-title">Order Summary</div>
         <div id="paymentItemsList"></div>
         <div class="summary-divider"></div>
@@ -4238,7 +4305,7 @@
           <span>Total Amount</span>
           <span id="paymentTotal">AED 0</span>
         </div>
-      </div>
+      </div> -->
 
       <!-- Selected Address -->
       <div class="checkout-section">
@@ -4249,7 +4316,7 @@
       </div>
 
       <!-- Payment Methods -->
-      <div class="checkout-section">
+      <!-- <div class="checkout-section">
         <div class="section-title">Payment Method</div>
         <div class="payment-methods">
           <div class="payment-method active" onclick="selectPaymentMethod('card', this)">
@@ -4269,6 +4336,125 @@
             <div class="payment-radio"></div>
           </div>
         </div>
+      </div> -->
+      <!-- Payment Methods (Same-to-same Design) -->
+      <div class="checkout-section" style="margin-top:20px;">
+
+        <div class="section-title" style="
+    font-size:18px;
+    font-weight:700;
+    margin-bottom:10px;
+  ">
+          Pay with
+        </div>
+
+        <!-- Debit / Credit -->
+        <div onclick="selectPaymentMethod('card', this)" style="
+    display:flex;
+    align-items:center;
+    padding:14px 0;
+    border-bottom:1px solid #eee;
+    cursor:pointer;
+  ">
+          <div style="margin-right:12px;">
+            <input type="radio" name="payment" style="margin: 0px !important;" />
+          </div>
+          <div style="flex:1;font-size:16px;font-weight:500;">
+            Debit/Credit Card
+          </div>
+          <div style="font-size:20px;">💳</div>
+        </div>
+
+        <!-- Promo Card -->
+        <div style="
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:#eaffc7;
+    padding:12px;
+    border-radius:10px;
+    margin:12px 0;
+  ">
+
+          💳
+          <div style="flex:1;">
+            <div style="font-weight:700;">noon One Credit Card</div>
+            <div style="color:#2e7d32;font-size:14px;">
+              Extra Ð 9.61 cashback
+            </div>
+          </div>
+          <div style="color:#1e88e5;font-weight:600;">
+            Apply now
+          </div>
+        </div>
+
+        <!-- Apple Pay -->
+        <div onclick="selectPaymentMethod('apple', this)" style="
+    display:flex;
+    align-items:center;
+    padding:14px 0;
+    border-bottom:1px solid #eee;
+    cursor:pointer;
+  ">
+          <div style="margin-right:12px;">
+            <input type="radio" name="payment" checked style="margin: 0px !important;" />
+          </div>
+          <div style="flex:1;font-size:16px;font-weight:500;">
+            Apple Pay
+          </div>
+          <div style="font-size:35px;"><i class="fa-brands fa-apple-pay" ></i>
+            </div>
+        </div>
+
+        <!-- Cash -->
+        <div onclick="selectPaymentMethod('cash', this)" style="
+    display:flex;
+    align-items:center;
+    padding:14px 0;
+    border-bottom:1px solid #eee;
+    cursor:pointer;
+  ">
+          <div style="margin-right:12px;">
+            <input type="radio" name="payment" style="margin: 0px !important;" />
+          </div>
+          <div style="flex:1;font-size:16px;font-weight:500;">
+            Cash on Delivery
+          </div>
+          <div style="font-size:20px;">💵</div>
+        </div>
+
+        <!-- ADCB -->
+        <div onclick="selectPaymentMethod('adcb', this)" style="
+    display:flex;
+    align-items:center;
+    padding:14px 0;
+    border-bottom:1px solid #eee;
+    cursor:pointer;
+  ">
+          <div style="margin-right:12px;">
+            <input type="radio" name="payment" style="margin: 0px !important;" />
+          </div>
+          <div style="flex:1;font-size:16px;font-weight:500;">
+            ADCB TouchPoints
+          </div>
+          <div style="font-size:18px;">⭕</div>
+        </div>
+
+        <!-- Credits -->
+        <div style="
+    display:flex;
+    align-items:center;
+    padding:14px 0;
+    opacity:.5;
+  ">
+          <div style="margin-right:12px;">
+            <input type="checkbox" disabled />
+          </div>
+          <div style="font-size:16px;">
+            Use my noon Credits (Ð 15.00)
+          </div>
+        </div>
+
       </div>
 
       <div class="checkout-footer">
@@ -4278,10 +4464,161 @@
   </div>
 
   <!-- CHECKOUT - SUCCESS -->
+  <div id="checkoutPayment" class="hidden" style="background:#f7f7f7;min-height:100vh;">
+
+    <!-- HEADER -->
+    <div style="
+      display:flex;
+      align-items:center;
+      padding:14px 16px;
+      background:#fff;
+      border-bottom:1px solid #eee;
+    ">
+      <div onclick="openCheckoutAddress()" style="font-size:18px;cursor:pointer;">←</div>
+      <div style="font-size:18px;font-weight:700;margin-left:10px;">Payment</div>
+    </div>
+
+    <!-- DUBAI AREA -->
+    <div style="padding:16px;background:#fff;margin-top:8px;">
+      <div style="font-weight:600;margin-bottom:6px;">Dubai Area</div>
+      <select style="
+        width:100%;
+        padding:12px;
+        border-radius:8px;
+        border:1px solid #ddd;
+        font-size:14px;
+      ">
+        <option>Select Dubai Area</option>
+        <option>Deira</option>
+        <option>Bur Dubai</option>
+        <option>Karama</option>
+        <option>Jumeirah</option>
+        <option>Business Bay</option>
+        <option>Dubai Marina</option>
+      </select>
+    </div>
+
+    <!-- ORDER SUMMARY -->
+    <div style="padding:16px;background:#fff;margin-top:8px;">
+      <div style="font-weight:700;margin-bottom:10px;">Order Summary</div>
+      <div id="paymentItemsList"></div>
+
+      <div style="display:flex;justify-content:space-between;margin-top:10px;">
+        <span>Subtotal</span>
+        <span id="paymentSubtotal">AED 0</span>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;margin-top:6px;">
+        <span>Delivery Fee</span>
+        <span>AED 5</span>
+      </div>
+
+      <div style="border-top:1px solid #eee;margin:10px 0;"></div>
+
+      <div style="display:flex;justify-content:space-between;font-weight:700;">
+        <span>Total Amount</span>
+        <span id="paymentTotal">AED 0</span>
+      </div>
+    </div>
+
+    <!-- DELIVERY ADDRESS -->
+    <div style="padding:16px;background:#fff;margin-top:8px;">
+      <div style="font-weight:700;margin-bottom:6px;">Delivery Address</div>
+      <div id="selectedAddressCard"></div>
+    </div>
+
+    <!-- PAYMENT METHODS (FIXED DESIGN) -->
+    <div style="padding:16px;background:#fff;margin-top:8px;">
+
+      <div style="font-size:18px;font-weight:700;margin-bottom:12px;">
+        Pay with
+      </div>
+
+      <!-- CARD -->
+      <label style="display:flex;align-items:center;padding:12px 0;border-bottom:1px solid #eee;">
+        <input type="radio" name="pay" style="margin: 0px !important;">
+        <div style="flex:1;font-size:16px;">Debit/Credit Card</div>
+        💳
+      </label>
+
+      <!-- PROMO -->
+      <div style="
+        display:flex;
+        align-items:center;
+        gap:12px;
+        background:#eaffc7;
+        padding:12px;
+        border-radius:10px;
+        margin:12px 0;
+      ">
+        <img src="https://via.placeholder.com/40" style="border-radius:6px;">
+        <div style="flex:1;">
+          <div style="font-weight:700;">noon One Credit Card</div>
+          <div style="font-size:14px;color:#2e7d32;">Extra Ð 9.61 cashback</div>
+        </div>
+        <div style="color:#1e88e5;font-weight:600;">Apply now</div>
+      </div>
+
+      <!-- APPLE PAY -->
+      <label style="display:flex;align-items:center;padding:12px 0;border-bottom:1px solid #eee;">
+        <input type="radio" name="pay" checked style="margin-right:12px;">
+        <div style="flex:1;font-size:16px;">Apple Pay</div>
+        Pay
+      </label>
+
+      <!-- CASH -->
+      <label style="display:flex;align-items:center;padding:12px 0;border-bottom:1px solid #eee;">
+        <input type="radio" name="pay" style="margin-right:12px;">
+        <div style="flex:1;font-size:16px;">Cash on Delivery</div>
+        💵
+      </label>
+
+      <!-- ADCB -->
+      <label style="display:flex;align-items:center;padding:12px 0;">
+        <input type="radio" name="pay" style="margin-right:12px;">
+        <div style="flex:1;font-size:16px;">ADCB TouchPoints</div>
+        ⭕
+      </label>
+
+      <!-- CREDITS -->
+      <div style="display:flex;align-items:center;padding:12px 0;opacity:.5;">
+        <input type="checkbox" disabled style="margin-right:12px;">
+        Use my noon Credits (Ð 15.00)
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div style="
+      position:fixed;
+      bottom:0;
+      left:0;
+      width:100%;
+      background:#fff;
+      padding:12px;
+      box-shadow:0 -4px 10px rgba(0,0,0,.1);
+    ">
+      <button onclick="processPayment()" style="
+        width:100%;
+        padding:14px;
+        background:#d81b60;
+        border:none;
+        border-radius:10px;
+        color:#fff;
+        font-size:16px;
+        font-weight:700;
+      ">
+        PAY NOW
+      </button>
+    </div>
+
+  </div>
+
+
   <div id="checkoutSuccess" class="hidden">
     <div class="success-content">
-      <div class="success-icon">✓</div>
-      <div class="success-title">Order Placed Successfully!</div>
+      <!-- <div class="success-icon">✓</div> -->
+      <!-- <div class="success-title">Order Placed Successfully!</div>
       <div class="success-message">Your order has been confirmed and will be delivered soon.</div>
 
       <div class="success-details">
@@ -4297,14 +4634,91 @@
           <span>Estimated Delivery</span>
           <span>30-40 minutes</span>
         </div>
-      </div>
+      </div> -->
+      <div class="app">
 
+        <!-- Header -->
+        <!-- <div class="headerD">
+          <div>
+            <h1><i class="fas fa-shipping-fast"></i> Live Delivery</h1>
+            <div class="time-display">8:42 PM</div>
+          </div>
+          <div>
+            <i class="fas fa-user-circle" style="font-size: 32px;"></i>
+          </div>
+        </div> -->
+
+        <!-- MAP -->
+        <div class="map-wrapper">
+          <div class="map-overlay">
+            <div class="drone-path"></div>
+            <div class="drone">🚁</div>
+          </div>
+          <iframe src="https://maps.google.com/maps?q=Dubai+Marina&z=15&output=embed"></iframe>
+        </div>
+
+        <!-- STATUS CARD -->
+        <div class="status-card">
+
+          <!-- TIME -->
+          <div class="time-row">
+            <div class="estimated-time">Estimated: 8:35 PM – 08:45 PM</div>
+            <div class="on-time"><i class="fas fa-check-circle"></i> ON TIME</div>
+          </div>
+
+          <!-- ICON PROGRESS -->
+          <div class="progress-icons">
+            <span class="active-icon">📱</span>
+            <div class="line active"></div>
+            <span>🍔</span>
+            <div class="line"></div>
+            <img src="./drone.png" width="25" height="25" />
+            <div class="line"></div>
+            <img src="./WhatsApp Image 2026-01-01 at 2.46.50 PM.jpeg" width="25" height="25" />
+          </div>
+
+          <!-- STATUS -->
+          <div class="status-text">
+            Your delivery agent is <span class="highlight">on his way to the restaurant</span>. Order #DUB-4829
+          </div>
+
+        </div>
+
+        <!-- DRONE DELIVERY INFO -->
+        <!-- <div class="drone-info">
+          <i class="fas fa-helicopter"></i>
+          <div class="drone-details">
+            <div><b>Drone Delivery</b> • 8 minutes en route</div>
+            <div class="serial-number">Serial: DRONE-X229 • Tracking enabled</div>
+          </div>
+          <i class="fas fa-chevron-right" style="color: #999;"></i>
+        </div> -->
+
+        <!-- Delivery Details -->
+        <!-- <div class="drone-info">
+          <i class="fas fa-pizza-slice"></i>
+          <div class="drone-details">
+            <div><b>Pizza Palace</b> • Italian Cuisine</div>
+            <div class="serial-number">Order: 2x Margherita, 1x Garlic Bread</div>
+          </div>
+          <i class="fas fa-chevron-right" style="color: #999;"></i>
+        </div> -->
+
+
+        <!-- Footer -->
+        <div class="footer">
+          <p>Live tracking powered by SkyDrop Technology</p>
+          <p>Delivery ID: DUB-4829-3FR • Last updated: <span id="updateTime">Just now</span></p>
+        </div>
+
+      </div>
       <div class="success-actions">
-        <button class="btn" onclick="goHome()">Continue Shopping</button>
-        <button class="btn-secondary" onclick="openOrders()">View Orders</button>
+        <button class="btn" onclick="goHome(true)">Continue Shopping</button>
+        <!-- <button class="btn-secondary" onclick="openOrders()">View Orders</button> -->
       </div>
     </div>
   </div>
+
 
   <!-- BOTTOM NAV -->
   <!-- <div class="bottom-nav">
@@ -4348,7 +4762,10 @@
       <!-- <span class="cart-badge" id="cartBadge" style="display: none;">0</span> -->
     </div>
 
-    <div class="nav" onclick="openOrders()">
+    <div class="nav" 
+    onclick="openOrdersDelivery()"
+    >
+    <!-- onclick="openOrders()" -->
       <i class="fa-solid fa-box"></i>
       <span>Orders</span>
     </div>
@@ -4418,12 +4835,16 @@
       }
     }
 
-    function goHome() {
+    function goHome(refresh = "") {
       hideAll();
       const el = getEl('home');
       if (el) el.style.display = "block";
       setNav(0);
       updateCartBadge();
+      if (refresh) {
+        window.location.reload();
+        return;
+      }
     }
 
     function openImpact() {
@@ -4600,36 +5021,49 @@
     function updateCartBadge() {
       const badge = document.getElementById('cartBadge');
       const badge1 = document.getElementById('cartBadge1');
-      const count = getCartCount();
+      const cartPrice = document.getElementById('cartPrice');
+      const cartPrice1 = document.getElementById('cartPrice1');
 
       const cartItem = JSON.parse(localStorage.getItem('cart')) || [];
+      const count = getCartCount();
 
+      // 👉 SET RESTAURANT NAME & IMAGE (last item)
       if (cartItem.length > 0) {
         const lastItem = cartItem[cartItem.length - 1];
 
-        // 👉 SET NAME
         const nameEl = document.getElementById('restaurantName');
-        if (nameEl && lastItem.name) {
-          nameEl.textContent = lastItem.name;
-        }
-
         const nameEl1 = document.getElementById('restaurantName1');
-        if (nameEl1 && lastItem.name) {
-          nameEl1.textContent = lastItem.name;
+        if (lastItem.name) {
+          if (nameEl) nameEl.textContent = lastItem.name;
+          if (nameEl1) nameEl1.textContent = lastItem.name;
         }
 
-        // 👉 SET IMAGE
         const imgEl = document.getElementById('restaurantImg');
-        if (imgEl && lastItem.image) {
-          imgEl.src = lastItem.image;
-        }
-
         const imgEl1 = document.getElementById('restaurantImg1');
-        if (imgEl1 && lastItem.image) {
-          imgEl1.src = lastItem.image;
+        if (lastItem.image) {
+          if (imgEl) imgEl.src = lastItem.image;
+          if (imgEl1) imgEl1.src = lastItem.image;
         }
       }
 
+      // 👉 CALCULATE TOTAL PRICE
+      const totalPrice = cartItem.reduce((sum, item) => {
+        const price = Number(item.price) || 0;
+        const qty = Number(item.quantity) || 1;
+        return sum + price * qty;
+      }, 0);
+
+      // 👉 SET TOTAL PRICE
+      if (cartPrice) {
+        cartPrice.textContent = `Ð ${totalPrice}`;
+        cartPrice1.textContent = `Ð ${totalPrice}`;
+
+
+        // if you want AED:
+        // cartPrice.textContent = `AED ${totalPrice}`;
+      }
+
+      // 👉 SHOW / HIDE BADGE
       if (badge && badge1) {
         if (count > 0) {
           badge.style.display = 'flex';
@@ -4640,7 +5074,6 @@
         }
       }
     }
-
 
 
     // Update product button to show quantity controls
@@ -4759,15 +5192,30 @@
 
       if (itemsList) {
         itemsList.innerHTML = cart.map(item => `
-      <div class="summary-item">
-        <div class="summary-item-info">
-          <div class="summary-item-name">${item.name} × ${item.quantity}</div>
-          <div class="summary-item-details">${item.description}</div>
+    <div class="summary-item">
+      <div class="summary-item-info">
+        <div class="summary-item-name">
+          ${item.name} × ${item.quantity}
         </div>
-        <div class="summary-item-price">AED ${item.price * item.quantity}</div>
+
+        <div class="summary-item-details">
+          ${item.description}
+        </div>
+
+        <!-- Prod & Exp Dates -->
+        <div class="summary-item-dates">
+          <span>Prod: 19 Nov 2025</span>
+          <span>Exp: 26 Nov 2026</span>
+        </div>
       </div>
-    `).join('');
+
+      <div class="summary-item-price">
+        AED ${item.price * item.quantity}
+      </div>
+    </div>
+  `).join('');
       }
+
 
       const subtotalEl = getEl('checkoutSubtotal');
       const totalEl = getEl('checkoutTotal');
@@ -4839,18 +5287,37 @@
       const subtotal = getCartTotal();
       const deliveryFee = 5;
       const total = subtotal + deliveryFee;
+      const PRODUCTION_DATE = "19 Nov 2025";
+      const EXPIRY_DATE = "26 Nov 2026";
 
       if (itemsList) {
-        itemsList.innerHTML = cart.map(item => `
+        itemsList.innerHTML = cart
+          .map(item => `
       <div class="summary-item">
         <div class="summary-item-info">
-          <div class="summary-item-name">${item.name} × ${item.quantity}</div>
-          <div class="summary-item-details">${item.description}</div>
+          <div class="summary-item-name">
+            ${item.name} × ${item.quantity}
+          </div>
+
+          <div class="summary-item-details">
+            ${item.description}
+          </div>
+
+          <!-- Production & Expiry -->
+          <div class="summary-item-dates">
+            <span>Prod: ${PRODUCTION_DATE}</span>
+            <span>Exp: ${EXPIRY_DATE}</span>
+          </div>
         </div>
-        <div class="summary-item-price">AED ${item.price * item.quantity}</div>
+
+        <div class="summary-item-price">
+          AED ${item.price * item.quantity}
+        </div>
       </div>
-    `).join('');
+    `)
+          .join('');
       }
+
 
       const subtotalEl = getEl('paymentSubtotal');
       const totalEl = getEl('paymentTotal');
@@ -5191,6 +5658,18 @@
       };
       reader.readAsDataURL(file);
     }
+
+    function toggleCuisine() {
+      const box = document.getElementById('cuisineOptions');
+      box.style.display = box.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function selectCuisine(value) {
+      document.getElementById('selectedCuisine').innerText = value;
+      document.getElementById('cuisineOptions').style.display = 'none';
+    }
+
+
   </script>
 
 </body>
