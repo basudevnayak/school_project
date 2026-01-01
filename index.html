@@ -3490,12 +3490,12 @@
   <div id="offers" class="hidden">
     <div class="cartMenu" onclick="openCart()" id="cartBadge1">
       <div class="card-left" style="display:flex; gap:10px; align-items:center;">
-        <img id="restaurantImg"
+        <img id="restaurantImg1"
           src="https://upload.wikimedia.org/wikipedia/sco/thumb/b/bf/KFC_logo.svg/2048px-KFC_logo.svg.png"
           style="width:40px; height:40px; border-radius:6px; object-fit:contain;">
 
         <div class="card-left-text">
-          <b id="restaurantName">KFC</b><br>
+          <b id="restaurantName1">KFC</b><br>
           <span class="view-menu">View menu</span>
         </div>
       </div>
@@ -4613,10 +4613,20 @@
           nameEl.textContent = lastItem.name;
         }
 
+        const nameEl1 = document.getElementById('restaurantName1');
+        if (nameEl1 && lastItem.name) {
+          nameEl1.textContent = lastItem.name;
+        }
+
         // 👉 SET IMAGE
         const imgEl = document.getElementById('restaurantImg');
         if (imgEl && lastItem.image) {
           imgEl.src = lastItem.image;
+        }
+
+        const imgEl1 = document.getElementById('restaurantImg1');
+        if (imgEl1 && lastItem.image) {
+          imgEl1.src = lastItem.image;
         }
       }
 
