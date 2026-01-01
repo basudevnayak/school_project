@@ -38,36 +38,37 @@
 
 
     .date-info {
-  display: flex;
-  gap: 16px;
-  margin-top: 8px;
-}
+      display: flex;
+      gap: 16px;
+      margin-top: 8px;
+    }
 
-.date-item {
-  display: flex;
-  flex-direction: column;
-}
+    .date-item {
+      display: flex;
+      flex-direction: column;
+    }
 
-.date-label {
-  font-size: 10px;
-  color: #888;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
+    .date-label {
+      font-size: 10px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
 
-.date-value {
-  font-size: 12px;
-  color: #333;
-  font-weight: 600;
-}
+    .date-value {
+      font-size: 12px;
+      color: #333;
+      font-weight: 600;
+    }
 
-.date-value.expiry {
-  color: #e11d48;
-}
+    .date-value.expiry {
+      color: #e11d48;
+    }
 
-.date-value.production {
-  color: #16a34a;
-}
+    .date-value.production {
+      color: #16a34a;
+    }
+
     body {
       margin: 0;
       /* background: linear-gradient(180deg, #F8F9FA 0%, #FFFFFF 100%); */
@@ -80,9 +81,9 @@
       scroll-behavior: smooth;
       overflow-x: hidden;
       width: 100%;
-  max-width: 420px;  
-  margin: auto;
-  border: 1px solid rgb(231, 231, 231);
+      max-width: 420px;
+      margin: auto;
+      border: 1px solid rgb(231, 231, 231);
     }
 
     /* Custom Scrollbar */
@@ -1111,6 +1112,7 @@
     #offers,
     #impact,
     #orders,
+    #ordersDelivery,
     #account,
     #profile,
     #addresses,
@@ -1860,14 +1862,16 @@
 
     .top-bar {
       position: absolute;
-      top: 0;
-      left: 0;
+      top: 20px;
+      /* left: 0; */
       width: 100%;
-      padding: 12px;
+      /* padding: 12px; */
       display: flex;
       align-items: center;
       gap: 10px;
       z-index: 10;
+      max-width: 400px;
+      margin: auto;
     }
 
     .back {
@@ -1878,7 +1882,8 @@
     .search {
       flex: 1;
       background: #fff;
-      padding: 10px 12px;
+      /* padding: 10px 12px; */
+      padding-left: 10px;
       border-radius: 12px;
       display: flex;
       align-items: center;
@@ -1952,13 +1957,14 @@
     .bottom-sheet {
       position: absolute;
       bottom: 0;
-      left: 0;
+      /* left: 0; */
       width: 100%;
       background: #fff;
       border-top-left-radius: 18px;
       border-top-right-radius: 18px;
       padding: 16px;
       z-index: 99999;
+      max-width: 419px
     }
 
     .location-preview {
@@ -2011,11 +2017,11 @@
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    body {
+    /* body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       color: var(--text-primary);
       padding-bottom: 80px;
-    }
+    } */
 
     .hidden {
       display: none;
@@ -3204,10 +3210,13 @@
     align-items: center;
     border: 1px solid var(--primary-color);
     border-radius: 8px;" onclick="openCart()" id="cartBadge">
-      <div class="card-left" style="">
-        <img src="https://upload.wikimedia.org/wikipedia/sco/thumb/b/bf/KFC_logo.svg/2048px-KFC_logo.svg.png">
+      <div class="card-left" style="display:flex; gap:10px; align-items:center;">
+        <img id="restaurantImg"
+          src="https://upload.wikimedia.org/wikipedia/sco/thumb/b/bf/KFC_logo.svg/2048px-KFC_logo.svg.png"
+          style="width:40px; height:40px; border-radius:6px; object-fit:contain;">
+
         <div class="card-left-text">
-          <b>KFC</b>
+          <b id="restaurantName">KFC</b><br>
           <span class="view-menu">View menu</span>
         </div>
       </div>
@@ -3219,16 +3228,91 @@
         <i>›</i>
       </div>
     </div>
-    <div class="header">
+    <!-- <div class="header">
       <div style="display: flex; justify-content: space-between;">
         <div class="location" onclick="openLocationPicker()">📍 Location of Camp</div>
-        <!-- <div onclick="openCart()">
+        <div onclick="openCart()">
           <span>🛒</span>
           <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
-        </div> -->
+        </div>
       </div>
       <div class="search-box">🔍 <input placeholder="Search Restaurant"></div>
       <div class="filters"><span class="chip">⚡ Cusine</span></div>
+    </div> -->
+    <div class="header">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+
+        <!-- Location Dropdown -->
+        <select class="location-dropdown" style="border: none;
+        background: transparent;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        outline: none;
+        padding: 4px 6px;" onchange="openLocationPicker(this.value)">
+          <option value="">📍 Select Camp Location</option>
+          <option>Deira</option>
+          <option>Bur Dubai</option>
+          <option>Karama</option>
+          <option>Jumeirah</option>
+          <option>Business Bay</option>
+          <option>Dubai Marina</option>
+          <option>Al Barsha</option>
+          <option>JLT</option>
+          <option>Downtown Dubai</option>
+          <option>International City</option>
+        </select>
+
+      </div>
+
+      <div class="search-box">
+        🔍 <input placeholder="Search Restaurant">
+      </div>
+
+      <div style="display: flex; gap: 10px; justify-content: space-between;">
+
+        <!-- Cuisine Dropdown -->
+        <div class="filters">
+          <select style="
+              /* padding: 6px 12px; */
+              border-radius: 20px;
+              font-size: 13px;
+              font-weight: 600;
+              border: 1px solid #ddd;
+              background: #fff;
+              cursor: pointer;
+              outline: none;
+            " onchange="selectCuisine(this.value)">
+            <option value="">⚡ Cuisine</option>
+            <option value="north">North Indian</option>
+            <option value="south">South Indian</option>
+            <option value="chinese">Chinese</option>
+            <option value="fastfood">Fast Food</option>
+          </select>
+        </div>
+
+        <!-- Near & Quick -->
+        <div class="filters">
+          <div class="chip" style="
+              padding: 6px 12px;
+              border-radius: 20px;
+              font-size: 13px;
+              font-weight: 600;
+              border: 1px solid #ddd;
+              background: #fff;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              gap: 4px;
+            ">
+            <i class="fa-solid fa-bolt" style="color:#2e7d32;"></i>
+            Near &amp; Quick
+          </div>
+        </div>
+
+      </div>
+
+
     </div>
 
     <div class="list">
@@ -3339,7 +3423,7 @@
   <div id="map_view">
     <!-- TOP BAR -->
     <div class="top-bar">
-      <div style="background: #ffffff;padding: 10px;border: 1px solid #000;" onclick="goHome()">←</div>
+      <div style="background: #ffffff;padding: 10px;border: 1px solid #bbbbbb;" onclick="goHome()">←</div>
       <div class="search">
         🔍
         <input placeholder="Search for your building or street">
@@ -3389,9 +3473,12 @@
       background: #fff;
       position: fixed;
       z-index: 9999;
-      bottom: 100px;                 /* ✅ fixed bottom */
-      left: 50%;                    /* ✅ center horizontally */
-      transform: translateX(-50%);  /* ✅ perfect centering */
+      bottom: 100px;
+      /* ✅ fixed bottom */
+      left: 50%;
+      /* ✅ center horizontally */
+      transform: translateX(-50%);
+      /* ✅ perfect centering */
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -3402,10 +3489,13 @@
   </style>
   <div id="offers" class="hidden">
     <div class="cartMenu" onclick="openCart()" id="cartBadge1">
-      <div class="card-left" style="">
-        <img src="https://upload.wikimedia.org/wikipedia/sco/thumb/b/bf/KFC_logo.svg/2048px-KFC_logo.svg.png">
+      <div class="card-left" style="display:flex; gap:10px; align-items:center;">
+        <img id="restaurantImg"
+          src="https://upload.wikimedia.org/wikipedia/sco/thumb/b/bf/KFC_logo.svg/2048px-KFC_logo.svg.png"
+          style="width:40px; height:40px; border-radius:6px; object-fit:contain;">
+
         <div class="card-left-text">
-          <b>KFC</b>
+          <b id="restaurantName">KFC</b><br>
           <span class="view-menu">View menu</span>
         </div>
       </div>
@@ -3422,7 +3512,7 @@
       <div class="header-title">KFC • Top Offers</div>
     </div>
 
-    <div class="listOffers">
+    <div class="listOffers" style="height: 90vh;">
       <div class="offer-item">
         <div class="offer-info">
           <h4>22pcs Mighty Bucket 🔥</h4>
@@ -3471,7 +3561,8 @@
     </div>
   </div>
 
-  <div id="impact" class="hidden" style="height: 200px;background: linear-gradient(135deg, #e6f7f0, #f4fff9); ">
+  <!-- style="height: 200px;background: linear-gradient(135deg, #e6f7f0, #f4fff9); " -->
+  <div id="impact" class="hidden">
     <div class="headerOrder">
       <div class="back" onclick="goHome()">←</div>
       <div class="header-title">Impact</div>
@@ -3731,9 +3822,69 @@
 
     </div>
   </div>
+  <div id="ordersDelivery" class="hidden" style="height:100vh ;">
+    <!-- <div class="header">
+      <span onclick="goHome()">←</span> Orders
+    </div>
+    <div class="order">
+      <img src="https://via.placeholder.com/48">
+      <div>
+        <b>Sushi Cago</b><br>24 Oct · 2 items<br>
+        <button class="order-again">Order again</button>
+      </div>
+    </div> -->
+    <div class="header" style="display: flex; align-items: center; gap: 10px;">
+      <div class="back" onclick="openAccount()">←</div>
+      <div class="header-title">Our heroes</div>
+    </div>
 
+    <!-- TITLE -->
+    <div class="section">Placed Orders</div>
+
+    <!-- ORDER 1 -->
+    <div class="order">
+      <img class="logo" src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec">
+      <div class="order-body">
+        <div class="restaurant">Sushi Cago</div>
+        <div class="meta">24 Oct 2025 · 2 items · Đ 48.95</div>
+        <div class="actions">
+          <button class="order-again">Order again</button>
+          <div class="status delivered">Delivered</div>
+        </div>
+      </div>
+      <div class="arrow">›</div>
+    </div>
+
+    <!-- ORDER 2 -->
+    <div class="order">
+      <img class="logo" src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
+      <div class="order-body">
+        <div class="restaurant">Dave's Hot Chicken</div>
+        <div class="meta">15 Oct 2025 · 1 item · Đ 42.00</div>
+        <div class="actions">
+          <button class="order-again">Order again</button>
+          <div class="status picked">Picked up</div>
+        </div>
+      </div>
+      <div class="arrow">›</div>
+    </div>
+
+    <!-- ORDER 3 -->
+    <div class="order">
+      <img class="logo" src="https://images.unsplash.com/photo-1550547660-d9450f859349">
+      <div class="order-body">
+        <div class="restaurant">Sushi Cago</div>
+        <div class="meta">10 Oct 2025 · 2 items · Đ 46.82</div>
+        <div class="actions">
+          <button class="order-again">Order again</button>
+          <div class="status delivered">Delivered</div>
+        </div>
+      </div>
+      <div class="arrow">›</div>
+    </div>
+  </div>
   <!-- ACCOUNT -->
-  <div id="account" class="hidden">
+  <div id="account" class="hidden" style="height: 98vh;">
     <!-- <div class="list-item" onclick="openProfile()">Profile ➜</div>
   <div class="list-item" onclick="openAddresses()">Addresses ➜</div>
   <div class="list-item" onclick="openOrders()">Orders ➜</div> -->
@@ -3767,7 +3918,7 @@
         ➤
       </div>
 
-      <div class="list-item">
+      <div class="list-item" onclick="openOrdersDelivery()">
         <div class="list-left">
           <div class="icon">📦</div>
           Orders
@@ -3943,7 +4094,7 @@
   </div>
 
   <!-- CART -->
-  <div id="cart" class="hidden">
+  <div id="cart" class="hidden" style="height: 98vh;">
     <div class="headerOrder">
       <div class="back" onclick="goHome()">←</div>
       <div class="header-title">Shopping Cart</div>
@@ -4039,6 +4190,33 @@
     <div class="headerOrder">
       <div class="back" onclick="openCheckoutAddress()">←</div>
       <div class="header-title">Payment</div>
+    </div>
+    <!-- Dubai Location Dropdown -->
+    <div class="checkout-section" style="margin:0px 26px;">
+      <div class="section-title">Dubai Area</div>
+
+      <select id="dubaiLocation" style="
+      width:100%;
+      padding:12px;
+      border-radius:8px;
+      border:1px solid #ddd;
+      font-size:14px;
+      background:#fff;
+      outline:none;
+      cursor:pointer;
+    ">
+        <option value="">Select Dubai Area</option>
+        <option>Deira</option>
+        <option>Bur Dubai</option>
+        <option>Karama</option>
+        <option>Jumeirah</option>
+        <option>Business Bay</option>
+        <option>Dubai Marina</option>
+        <option>Al Barsha</option>
+        <option>JLT</option>
+        <option>Downtown Dubai</option>
+        <option>International City</option>
+      </select>
     </div>
 
     <div class="checkout-content">
@@ -4183,7 +4361,7 @@
 
   <script>
 
-    
+
     // Cart Management System
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -4200,6 +4378,7 @@
       const homeEl = getEl('home');
       const offersEl = getEl('offers');
       const ordersEl = getEl('orders');
+      const ordersDeliveryEl = getEl('ordersDelivery');
       const accountEl = getEl('account');
       const profileEl = getEl('profile');
       const addressesEl = getEl('addresses');
@@ -4228,7 +4407,7 @@
       if (map_viewEl) map_viewEl.style.display = "none";
       if (impactEl) impactEl.style.display = "none";
       if (donateEl) donateEl.style.display = "none";
-
+      if (ordersDeliveryEl) ordersDeliveryEl.style.display = "none";
       // Note: login is handled separately in checkLoginStatus
     }
 
@@ -4318,7 +4497,12 @@
       if (el) el.style.display = "block";
       updateCartBadge();
     }
-
+    function openOrdersDelivery() {
+      hideAll();
+      const el = getEl('ordersDelivery');
+      if (el) el.style.display = "block";
+      updateCartBadge();
+    }
     function openCart() {
       hideAll();
       const el = getEl('cart');
@@ -4393,14 +4577,51 @@
     }
 
     // Update cart badge
+    // function updateCartBadge() {
+    //   const badge = document.getElementById('cartBadge');
+    //   const badge1 = document.getElementById('cartBadge1');
+    //   const count = getCartCount();
+    //   const cartItem=JSON.parse(localStorage.getItem('cart')) || [];
+    //   console.log(cartItem[cartItem.length-1].name);
+    //   console.log(badge)
+    //   if (badge) {
+    //     if (count > 0) {
+    //       // badge.textContent = count;
+    //       badge.style.display = 'flex';
+    //       badge1.style.display = 'flex';
+    //     } else {
+    //       badge.style.display = 'none';
+    //       badge1.style.display = 'none';
+    //     }
+    //   }
+    // }
+
+
     function updateCartBadge() {
       const badge = document.getElementById('cartBadge');
       const badge1 = document.getElementById('cartBadge1');
       const count = getCartCount();
-      console.log(badge)
-      if (badge) {
+
+      const cartItem = JSON.parse(localStorage.getItem('cart')) || [];
+
+      if (cartItem.length > 0) {
+        const lastItem = cartItem[cartItem.length - 1];
+
+        // 👉 SET NAME
+        const nameEl = document.getElementById('restaurantName');
+        if (nameEl && lastItem.name) {
+          nameEl.textContent = lastItem.name;
+        }
+
+        // 👉 SET IMAGE
+        const imgEl = document.getElementById('restaurantImg');
+        if (imgEl && lastItem.image) {
+          imgEl.src = lastItem.image;
+        }
+      }
+
+      if (badge && badge1) {
         if (count > 0) {
-          // badge.textContent = count;
           badge.style.display = 'flex';
           badge1.style.display = 'flex';
         } else {
@@ -4409,6 +4630,8 @@
         }
       }
     }
+
+
 
     // Update product button to show quantity controls
     function updateProductButton(id) {
