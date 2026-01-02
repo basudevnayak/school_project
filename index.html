@@ -214,7 +214,7 @@
       box-shadow: var(--shadow-sm);
       cursor: pointer;
       transition: var(--transition);
-      border: 1px solid var(--border-color);
+      /* border: 1px solid var(--border-color); */
     }
 
     .card:hover {
@@ -297,7 +297,7 @@
     }
 
     .list-item:hover {
-      background: var(--bg-secondary);
+      /* background: var(--bg-secondary); */
       padding-left: 24px;
     }
 
@@ -705,7 +705,7 @@
     }
 
     .list-item:hover {
-      background: var(--bg-secondary);
+      /* background: var(--bg-secondary); */
       padding-left: 24px;
     }
 
@@ -862,8 +862,9 @@
     /* CONTENT */
     .container {
       padding: 20px;
-      background: var(--bg-secondary);
-      min-height: calc(100vh - 200px);
+      /* background: var(--bg-secondary); */
+      /* min-height: calc(100vh - 200px); */
+      min-height: calc(100vh);
     }
 
     .section-title {
@@ -2624,7 +2625,7 @@
     .card {
       background: #fff;
       border-radius: 12px;
-      padding: 16px;
+      /* padding: 16px; */
       margin-bottom: 14px;
       box-shadow: 0 1px 5px rgba(0, 0, 0, .06);
     }
@@ -3192,7 +3193,7 @@
         <h1 class="login-title" style="color: var(--bg-primary);">Create a <span>account</span></h1>
         <p class="login-subtitle" style="color: var(--bg-primary);">
           Already have an account?
-          <a onclick="showLogin()">Sign In</a>
+          <a onclick="showLogin()" style="color: var(--bg-primary);">Sign In</a>
         </p>
 
         <form id="signupForm">
@@ -3223,21 +3224,21 @@
 
       <!-- SIGN IN VIEW -->
       <div id="loginView" class="hidden">
-        <h1 class="login-title">Sign <span>In</span></h1>
-        <p class="login-subtitle">
+        <h1 class="login-title" style="color: var(--bg-primary);" >Sign <span>In</span></h1>
+        <p class="login-subtitle" style="color: var(--bg-primary);">
           Don't have an account?
-          <a onclick="showSignup()">Create Account</a>
+          <a onclick="showSignup()" style="color: var(--bg-primary);">Create Account</a>
         </p>
 
         <form id="loginForm">
           <div class="input-group">
             <input type="email" id="li_email" required>
-            <label>Email</label>
+            <label style="color: var(--bg-primary);">Email</label>
           </div>
 
           <div class="input-group">
             <input type="password" id="li_password" required>
-            <label>Password</label>
+            <label style="color: var(--bg-primary);">Password</label>
             <span class="password-toggle" onclick="togglePassword('li_password')">👁</span>
           </div>
 
@@ -3304,7 +3305,7 @@
         font-weight: 600;
         cursor: pointer;
         outline: none;
-        padding: 4px 6px;" onchange="openLocationPicker(this.value)">
+        padding: 4px 6px; width: 100%;" onchange="openLocationPicker(this.value)">
           <option>📍 Deira</option>
           <option>📍Bur Dubai</option>
           <option>📍Karama</option>
@@ -3317,7 +3318,7 @@
         🔍 <input placeholder="Search Restaurant">
       </div>
 
-      <div style="display: flex; gap: 10px; justify-content: space-between; align-items: center; margin-top: 10px;">
+      <div style="display: flex; gap: 10px;align-items: center; margin-top: 10px;">
 
         <!-- Cuisine Dropdown -->
         <div style="position: relative; display: inline-block;">
@@ -3354,10 +3355,10 @@
               box-shadow: 0 4px 12px rgba(0,0,0,0.1);
               z-index: 999;
             ">
-            <div style="padding:8px 12px; cursor:pointer;" onclick="selectCuisine('north')">North Indian</div>
-            <div style="padding:8px 12px; cursor:pointer;" onclick="selectCuisine('south')">South Indian</div>
-            <div style="padding:8px 12px; cursor:pointer;" onclick="selectCuisine('chinese')">Chinese</div>
-            <div style="padding:8px 12px; cursor:pointer;" onclick="selectCuisine('fastfood')">Fast Food</div>
+            <div style="padding:8px 12px; cursor:pointer;" onclick="selectCuisine('North')">North</div>
+            <div style="padding:8px 12px; cursor:pointer;" onclick="selectCuisine('South')">South</div>
+            <div style="padding:8px 12px; cursor:pointer;" onclick="selectCuisine('Chinese')">Chinese</div>
+            <div style="padding:8px 12px; cursor:pointer;" onclick="selectCuisine('Fast')">Fast</div>
           </div>
 
         </div>
@@ -3390,12 +3391,12 @@
 
     <div class="list">
       <div class="card" onclick="openOffers()">
-        <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec" alt="KFC Restaurant" loading="lazy">
+        <img src="https://images.ctfassets.net/wtodlh47qxpt/5et3gPnC8ZgLYNPhRFb85T/2c8fb8c0a64e4adb748a79d8a7083591/All-in-One-Bucket.jpg?h=600&w=800&fm=webp&fit=fill" alt="KFC Restaurant" loading="lazy">
         <div class="card-body">
           <div class="card-title">KFC</div>
           <div class="card-sub">Fast Food, American</div>
           <div class="card-info">
-            <div class="time">⚡ 20–30 mins</div>
+            <div class="time"><i class="fa-solid fa-bolt" style="color:#2e7d32;"></i> 20–30 mins</div>
             <div class="rating">★ 4.4</div>
           </div>
           <div class="date-info">
@@ -3413,13 +3414,13 @@
     </div>
     <div class="list">
       <div class="card" onclick="openOffers()">
-        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" alt="Fast Food Restaurant"
+        <img src="https://images.ctfassets.net/wtodlh47qxpt/RFuh4GViScBmegob9BTtq/3b3037798cb62793436109cc8249a066/BUCKETS_Bucket-for-Two_Delivery.jpg?h=600&w=800&fm=webp&fit=fill" alt="Fast Food Restaurant"
           loading="lazy">
         <div class="card-body">
-          <div class="card-title">KFC</div>
+          <div class="card-title">KFC Tandoori Zinger Box</div>
           <div class="card-sub">Fast Food, American</div>
           <div class="card-info">
-            <div class="time">⚡ 20–30 mins</div>
+            <div class="time"><i class="fa-solid fa-bolt" style="color:#2e7d32;"></i> 20–30 mins</div>
             <div class="rating">★ 4.4</div>
           </div>
           <div class="date-info">
@@ -3437,12 +3438,12 @@
     </div>
     <div class="list">
       <div class="card" onclick="openOffers()">
-        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349" alt="Restaurant Food" loading="lazy">
+        <img src="https://images.ctfassets.net/wtodlh47qxpt/2zDCHJjRjp1CNsrytoNRJk/fa202b221bf6d3d893eabc9528171046/BUCKETS_Ultimate-Savings-Chicken-Bucket_Delivery.jpg?h=600&w=800&fm=webp&fit=fill" alt="Restaurant Food" loading="lazy">
         <div class="card-body">
-          <div class="card-title">KFC</div>
+          <div class="card-title">Tandoori Zinger Box</div>
           <div class="card-sub">Fast Food, American</div>
           <div class="card-info">
-            <div class="time">⚡ 20–30 mins</div>
+            <div class="time"><i class="fa-solid fa-bolt" style="color:#2e7d32;"></i> 20–30 mins</div>
             <div class="rating">★ 4.4</div>
           </div>
           <div class="date-info">
@@ -3460,12 +3461,12 @@
     </div>
     <div class="list">
       <div class="card" onclick="openOffers()">
-        <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec" alt="KFC Restaurant" loading="lazy">
+        <img src="https://images.ctfassets.net/wtodlh47qxpt/5et3gPnC8ZgLYNPhRFb85T/2c8fb8c0a64e4adb748a79d8a7083591/All-in-One-Bucket.jpg?h=600&w=800&fm=webp&fit=fill" alt="KFC Restaurant" loading="lazy">
         <div class="card-body">
-          <div class="card-title">KFC</div>
+          <div class="card-title">Classic Zinger Box</div>
           <div class="card-sub">Fast Food, American</div>
           <div class="card-info">
-            <div class="time">⚡ 20–30 mins</div>
+            <div class="time"><i class="fa-solid fa-bolt" style="color:#2e7d32;"></i> 20–30 mins</div>
             <div class="rating">★ 4.4</div>
           </div>
           <div class="date-info">
@@ -3600,7 +3601,7 @@
 
         <!-- INFO -->
         <div style="padding:14px 16px">
-          <div style="font-size:18px;font-weight:700;color:#ffffff">ALBAIK - Ajman</div>
+          <div style="font-size:18px;font-weight:700;color:#ffffff">KFC</div>
           <!-- <div style="font-size:13px;color:#777;margin-top:4px">
             Fast Food, Seafood, Breakfast
           </div>
@@ -3650,10 +3651,10 @@
         </div> -->
 
         <!-- TABS -->
-        <div id="tabs" style="display:flex;gap:18px;padding:12px 16px;
+        <div id="tabs" style="padding:12px 16px;
                     border-bottom:1px solid #eee;font-size:13px;
                     overflow-x:auto;white-space:nowrap;
-                    position:sticky;top:0;background:#fff;z-index:10;overflow: hidden;     border-radius: var(--radius-md)">
+                    position:sticky;top:0;background:#fff;z-index:10;overflow: hidden;  text-align: center;   border-radius: var(--radius-md)">
 
           <span class="tab active" data-id="best" style="color:#000;font-weight:600;
                        border-bottom:2px solid #ff2d55;padding-bottom:6px;cursor:pointer">
@@ -3695,11 +3696,11 @@
             <div class="offer-price">Ð 135</div>
           </div>
           <div class="offer-img">
-            <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec" alt="22pcs Mighty Bucket"
+            <img src="https://images.ctfassets.net/wtodlh47qxpt/5et3gPnC8ZgLYNPhRFb85T/2c8fb8c0a64e4adb748a79d8a7083591/All-in-One-Bucket.jpg?h=600&w=800&fm=webp&fit=fill" alt="22pcs Mighty Bucket"
               loading="lazy">
             <div class="add-btn-container" id="product-1">
               <button class="add-btn"
-                onclick="addToCart('1', '22pcs Mighty Bucket 🔥', '16pcs chicken + fries + buns', 135, 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec')">+</button>
+                onclick="addToCart('1', '22pcs Mighty Bucket 🔥', '16pcs chicken + fries + buns', 135, 'https://images.ctfassets.net/wtodlh47qxpt/5et3gPnC8ZgLYNPhRFb85T/2c8fb8c0a64e4adb748a79d8a7083591/All-in-One-Bucket.jpg?h=600&w=800&fm=webp&fit=fill')">+</button>
             </div>
           </div>
         </div>
@@ -3721,11 +3722,11 @@
             <div class="offer-price">Ð 57</div>
           </div>
           <div class="offer-img">
-            <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" alt="Wings Duo Bucket"
+            <img src="https://images.ctfassets.net/wtodlh47qxpt/RFuh4GViScBmegob9BTtq/3b3037798cb62793436109cc8249a066/BUCKETS_Bucket-for-Two_Delivery.jpg?h=600&w=800&fm=webp&fit=fill" alt="Wings Duo Bucket"
               loading="lazy">
             <div class="add-btn-container" id="product-2">
               <button class="add-btn"
-                onclick="addToCart('2', 'Wings Duo Bucket', '8pcs wings + fries + drink', 57, 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092')">+</button>
+                onclick="addToCart('2', 'Wings Duo Bucket', '8pcs wings + fries + drink', 57, 'https://images.ctfassets.net/wtodlh47qxpt/RFuh4GViScBmegob9BTtq/3b3037798cb62793436109cc8249a066/BUCKETS_Bucket-for-Two_Delivery.jpg?h=600&w=800&fm=webp&fit=fill')">+</button>
             </div>
           </div>
         </div>
@@ -3747,10 +3748,10 @@
             <div class="offer-price">Ð 34</div>
           </div>
           <div class="offer-img">
-            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349" alt="Twister Box" loading="lazy">
+            <img src="https://images.ctfassets.net/wtodlh47qxpt/2zDCHJjRjp1CNsrytoNRJk/fa202b221bf6d3d893eabc9528171046/BUCKETS_Ultimate-Savings-Chicken-Bucket_Delivery.jpg?h=600&w=800&fm=webp&fit=fill" alt="Twister Box" loading="lazy">
             <div class="add-btn-container" id="product-3">
               <button class="add-btn"
-                onclick="addToCart('3', 'Twister Box', 'Twister + fries + drink', 34, 'https://images.unsplash.com/photo-1550547660-d9450f859349')">+</button>
+                onclick="addToCart('3', 'Twister Box', 'Twister + fries + drink', 34, 'https://images.ctfassets.net/wtodlh47qxpt/2zDCHJjRjp1CNsrytoNRJk/fa202b221bf6d3d893eabc9528171046/BUCKETS_Ultimate-Savings-Chicken-Bucket_Delivery.jpg?h=600&w=800&fm=webp&fit=fill')">+</button>
             </div>
           </div>
         </div>
@@ -3947,7 +3948,7 @@
       <div class="map-wrapper">
         <div class="map-overlay">
           <div class="drone-path"></div>
-          <div class="drone">🚁</div>
+          <div class="drone"><img src="./WhatsApp Image 2026-01-02 at 9.56.46 PM.jpeg" width="25" height="25"></div>
         </div>
         <iframe src="https://maps.google.com/maps?q=Dubai+Marina&z=15&output=embed"></iframe>
       </div>
@@ -3967,7 +3968,7 @@
           <div class="line active"></div>
           <span>🍔</span>
           <div class="line"></div>
-          <span>🚁</span>
+          <span><img src="./WhatsApp Image 2026-01-02 at 9.56.46 PM.jpeg" width="25" height="25"></span>
           <div class="line"></div>
           <span>🏠</span>
         </div>
@@ -4041,7 +4042,7 @@
 
     <!-- ORDER 1 -->
     <div class="order">
-      <img class="logo" src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec">
+      <img class="logo" src="https://images.ctfassets.net/wtodlh47qxpt/5et3gPnC8ZgLYNPhRFb85T/2c8fb8c0a64e4adb748a79d8a7083591/All-in-One-Bucket.jpg?h=600&w=800&fm=webp&fit=fill">
       <div class="order-body">
         <div class="restaurant" style="color: var(--bg-primary);">Sushi Cago</div>
         <div class="meta" style="color: var(--bg-primary);">24 Oct 2025 · 2 items · Đ 48.95</div>
@@ -4055,7 +4056,7 @@
 
     <!-- ORDER 2 -->
     <div class="order">
-      <img class="logo" src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
+      <img class="logo" src="https://images.ctfassets.net/wtodlh47qxpt/RFuh4GViScBmegob9BTtq/3b3037798cb62793436109cc8249a066/BUCKETS_Bucket-for-Two_Delivery.jpg?h=600&w=800&fm=webp&fit=fill">
       <div class="order-body">
         <div class="restaurant" style="color: var(--bg-primary);">Dave's Hot Chicken</div>
         <div class="meta" style="color: var(--bg-primary);">15 Oct 2025 · 1 item · Đ 42.00</div>
@@ -4069,7 +4070,7 @@
 
     <!-- ORDER 3 -->
     <div class="order">
-      <img class="logo" src="https://images.unsplash.com/photo-1550547660-d9450f859349">
+      <img class="logo" src="https://images.ctfassets.net/wtodlh47qxpt/2zDCHJjRjp1CNsrytoNRJk/fa202b221bf6d3d893eabc9528171046/BUCKETS_Ultimate-Savings-Chicken-Bucket_Delivery.jpg?h=600&w=800&fm=webp&fit=fill">
       <div class="order-body">
         <div class="restaurant">Sushi Cago</div>
         <div class="meta">10 Oct 2025 · 2 items · Đ 46.82</div>
@@ -4127,13 +4128,13 @@
       <div class="list-item">
         <div class="list-left" style="color: var(--bg-primary);">
           <div class="icon">💰</div>
-          Credits
+          Our hero's credit
         </div>
         ➤
       </div>
     </div>
 
-    <div class="signout" onclick="handleLogout()" style="color: var(--bg-primary);">↩ Sign Out</div>
+    <div class="signout" onclick="handleLogout()" style="color: var(--bg-primary); margin-top: 30vh;">↩ Sign Out</div>
 
     <div class="footer-links" style="color: var(--bg-primary);">
       Terms of Use · Privacy Policy<br />
@@ -4142,7 +4143,7 @@
   </div>
 
   <!-- PROFILE -->
-  <div id="profile" class="hidden">
+  <div id="profile" class="hidden appBody" style="height: 95vh;">
     <div class="headerOrder">
       <div class="back" onclick="openAccount()">←</div>
       <div class="header-title">Profile</div>
@@ -4207,7 +4208,7 @@
   </div>
 
   <!-- ADDRESSES -->
-  <div id="addresses" class="hidden">
+  <div id="addresses" class="hidden appBody">
     <div class="headerOrder">
       <div class="back" onclick="openAccount()">←</div>
       <div class="header-title">Select delivery location</div>
@@ -4227,10 +4228,10 @@
       </div>
 
       <!-- SAVED -->
-      <div class="saved-title">SAVED ADDRESSES</div>
+      <div class="saved-title" style="color: var(--bg-primary);">SAVED ADDRESSES</div>
 
       <!-- ADDRESS 1 -->
-      <div class="address-card active">
+      <div class="address-card">
         <div class="address-header">
           <div class="address-icon">📍</div>
           <div class="address-type">Other</div>
@@ -4324,7 +4325,7 @@
         </iframe>
 
         <!-- Animated Drone Icon -->
-        <div class="drone-icon">🚁</div>
+        <div class="drone-icon"><img src="./WhatsApp Image 2026-01-02 at 9.56.46 PM.jpeg" width="25" height="25"></div>
 
         <!-- Delivery Route Line -->
         <div class="route-line">
@@ -4343,7 +4344,7 @@
         <!-- Customer Location Marker -->
         <div class="location-marker customer">
           <div class="marker-icon">
-            <span>🏠</span>
+            <span> <img src="./WhatsApp Image 2026-01-01 at 2.46.50 PM.jpeg" width="25" height="25" /></span>
           </div>
         </div>
       </div>
@@ -4509,7 +4510,7 @@
         </div>
 
         <!-- Promo Card -->
-        <div style="
+        <!-- <div style="
     display:flex;
     align-items:center;
     gap:12px;
@@ -4529,7 +4530,7 @@
           <div style="color:#1e88e5;font-weight:600;">
             Apply now
           </div>
-        </div>
+        </div> -->
 
         <!-- Apple Pay -->
         <div onclick="selectPaymentMethod('apple', this)" style="
@@ -4795,7 +4796,7 @@
         <div class="map-wrapper">
           <div class="map-overlay">
             <div class="drone-path"></div>
-            <div class="drone">🚁</div>
+            <div class="drone"><img src="./WhatsApp Image 2026-01-02 at 9.56.46 PM.jpeg" width="25" height="25"></div>
           </div>
           <iframe src="https://maps.google.com/maps?q=Dubai+Marina&z=15&output=embed"></iframe>
         </div>
@@ -5250,21 +5251,21 @@
           name: '22pcs Mighty Bucket 🔥',
           description: '16pcs chicken + fries + buns',
           price: 135,
-          image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec'
+          image: 'https://images.ctfassets.net/wtodlh47qxpt/5et3gPnC8ZgLYNPhRFb85T/2c8fb8c0a64e4adb748a79d8a7083591/All-in-One-Bucket.jpg?h=600&w=800&fm=webp&fit=fill'
         },
         '2': {
           id: '2',
           name: 'Wings Duo Bucket',
           description: '8pcs wings + fries + drink',
           price: 57,
-          image: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092'
+          image: 'https://images.ctfassets.net/wtodlh47qxpt/RFuh4GViScBmegob9BTtq/3b3037798cb62793436109cc8249a066/BUCKETS_Bucket-for-Two_Delivery.jpg?h=600&w=800&fm=webp&fit=fill'
         },
         '3': {
           id: '3',
           name: 'Twister Box',
           description: 'Twister + fries + drink',
           price: 34,
-          image: 'https://images.unsplash.com/photo-1550547660-d9450f859349'
+          image: 'https://images.ctfassets.net/wtodlh47qxpt/2zDCHJjRjp1CNsrytoNRJk/fa202b221bf6d3d893eabc9528171046/BUCKETS_Ultimate-Savings-Chicken-Bucket_Delivery.jpg?h=600&w=800&fm=webp&fit=fill'
         }
       };
       return products[id];
@@ -5822,7 +5823,7 @@
 
 
   </script>
- <script>
+ <!-- <script>
   /* Disable right click */
   document.addEventListener('contextmenu', e => e.preventDefault());
 
@@ -5863,7 +5864,7 @@
       document.body.innerHTML = '<h2 style="text-align:center;margin-top:40vh;">DevTools Detected</h2>';
     }
   }, 1000);
-</script>
+</script> -->
 </body>
 
 </html>
