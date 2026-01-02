@@ -69,9 +69,13 @@
       color: #16a34a;
     }
 
+    .appBody {
+      background: #16a34a;
+    }
+
     body {
       margin: 0;
-      background: #16a34a;
+      /* background: #16a34a; */
       padding-bottom: 80px;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
       color: var(--text-primary);
@@ -282,7 +286,7 @@
 
     /* SIMPLE LIST */
     .list-item {
-      background: var(--bg-primary);
+      /* background: var(--bg-primary); */
       padding: 16px 20px;
       border-bottom: 1px solid var(--border-color);
       display: flex;
@@ -482,7 +486,7 @@
       top: -50px;
     left: 10px;
     font-size: 16px; */
-    font-weight: bold;
+      font-weight: bold;
     }
 
     .add-btn:hover {
@@ -494,7 +498,7 @@
 
     .listOffers {
       padding: 16px;
-      background: var(--bg-secondary);
+      /* background: var(--bg-secondary); */
     }
 
     /* ORDER STYLE */
@@ -554,13 +558,13 @@
       padding: 18px 20px;
       border-bottom: 1px solid var(--border-color);
       align-items: flex-start;
-      background: var(--bg-primary);
+      background:#16a34a;
       transition: var(--transition);
       cursor: pointer;
     }
 
     .order:hover {
-      background: var(--bg-secondary);
+      /* background: var(--bg-secondary); */
       padding-left: 24px;
     }
 
@@ -1363,7 +1367,7 @@
       padding: 3px;
       position: absolute;
       top: 10px;
-      left:-30px
+      left: -30px
     }
 
     .quantity-display .qty-btn {
@@ -1742,7 +1746,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #fff;
+      /* background: #fff; */
       padding: 20px;
       position: fixed;
       top: 0;
@@ -2779,14 +2783,14 @@
 
     .view-menu {
       font-size: 12px;
-      color: #e11d48;
+      color: var(--primary-color);
       font-weight: 600;
       cursor: pointer;
     }
 
     /* RIGHT PILL */
     .checkout-pill {
-      background:var(--primary-color);
+      background: var(--primary-color);
       color: #fff;
       padding: 8px;
       border-radius: 12px;
@@ -3181,36 +3185,36 @@
 
 
   <!-- LOGIN PAGE -->
-  <div id="login">
+  <div id="login" class="appBody">
     <div class="login-container">
       <!-- SIGN UP VIEW -->
       <div id="signupView">
-        <h1 class="login-title">Create a <span>account</span></h1>
-        <p class="login-subtitle">
+        <h1 class="login-title" style="color: var(--bg-primary);">Create a <span>account</span></h1>
+        <p class="login-subtitle" style="color: var(--bg-primary);">
           Already have an account?
           <a onclick="showLogin()">Sign In</a>
         </p>
 
         <form id="signupForm">
           <div class="input-group">
-            <input type="email" id="su_email" required>
-            <label>Email</label>
+            <input type="email" id="su_email" required >
+            <label style="color: var(--bg-primary);">Email</label>
           </div>
 
           <div class="input-group">
             <input type="password" id="su_password" required>
-            <label>Password</label>
+            <label style="color: var(--bg-primary);">Password</label>
             <span class="password-toggle" onclick="togglePassword('su_password')">👁</span>
           </div>
 
           <div class="input-group">
             <input type="text" id="firstName" required>
-            <label>First Name</label>
+            <label style="color: var(--bg-primary);">First Name</label>
           </div>
 
           <div class="input-group">
             <input type="text" id="lastName" required>
-            <label>Last Name</label>
+            <label style="color: var(--bg-primary);">Last Name</label>
           </div>
 
           <button type="submit">CREATE AN ACCOUNT</button>
@@ -3244,7 +3248,7 @@
   </div>
 
   <!-- HOME (FOOD LISTING) -->
-  <div id="home" class="hidden">
+  <div id="home" class="hidden appBody" >
     <div style=" width: 100%;
     max-width: 350px;
     padding: 12px;
@@ -3556,7 +3560,7 @@
 
     }
   </style>
-  <div id="offers" class="hidden">
+  <div id="offers" class="hidden appBody">
     <div class="cartMenu" onclick="openCart()" id="cartBadge1">
       <div class="card-left" style="display:flex; gap:10px; align-items:center;">
         <img id="restaurantImg1"
@@ -3587,15 +3591,16 @@
 
       <div style="max-width:420px;margin:auto;
       ">
-      <!-- /* min-height:135vh */ -->
+        <!-- /* min-height:135vh */ -->
 
         <!-- IMAGE -->
-        <img src="https://f.nooncdn.com/food_production/food/restaurant/partner_117395/8scduy78_0.jpg?width=720&crop=720:328&format=avif"
-             style="width:100%;height:230px;object-fit:cover">
-      
+        <img
+          src="https://f.nooncdn.com/food_production/food/restaurant/partner_117395/8scduy78_0.jpg?width=720&crop=720:328&format=avif"
+          style="width:100%;height:230px;object-fit:cover;border-radius: var(--radius-md)">
+
         <!-- INFO -->
         <div style="padding:14px 16px">
-          <div style="font-size:18px;font-weight:700;color:#111">ALBAIK - Ajman</div>
+          <div style="font-size:18px;font-weight:700;color:#ffffff">ALBAIK - Ajman</div>
           <!-- <div style="font-size:13px;color:#777;margin-top:4px">
             Fast Food, Seafood, Breakfast
           </div>
@@ -3605,7 +3610,7 @@
             <span>⏱ 45-55 mins</span>
           </div> -->
         </div>
-      
+
         <!-- DELIVERY -->
         <!-- <div style="margin:0 16px;padding:10px 12px;border:1px solid #e6e6e6;
                     border-radius:6px;font-size:13px">
@@ -3620,7 +3625,7 @@
           <span>Unlimited <b>FREE delivery</b>. Try it for free!</span>
           <span style="margin-left:auto;color:#ff2d55">›››</span>
         </div> -->
-      
+
         <!-- COUPONS -->
         <div style="display:flex;gap:10px;padding:10px 16px;overflow-x:hidden">
           <div style="min-width:125px;padding:8px;border:1.5px dashed #1fa84f;
@@ -3636,23 +3641,21 @@
             <b>Free Delivery</b><br><small style="color:#777">Min ₹40</small><br>Auto Applied
           </div>
         </div>
-      
+
         <!-- SEARCH -->
         <!-- <div style="margin:10px 16px;background:#f2f2f2;border-radius:6px;
                     padding:8px 10px;display:flex;gap:8px;align-items:center">
           ☰ 🔍 <input placeholder="Search menu"
           style="border:none;background:transparent;outline:none;width:100%">
         </div> -->
-      
+
         <!-- TABS -->
-        <div id="tabs"
-             style="display:flex;gap:18px;padding:12px 16px;
+        <div id="tabs" style="display:flex;gap:18px;padding:12px 16px;
                     border-bottom:1px solid #eee;font-size:13px;
                     overflow-x:auto;white-space:nowrap;
-                    position:sticky;top:0;background:#fff;z-index:10;overflow: hidden;">
-      
-          <span class="tab active" data-id="best"
-                style="color:#000;font-weight:600;
+                    position:sticky;top:0;background:#fff;z-index:10;overflow: hidden;     border-radius: var(--radius-md)">
+
+          <span class="tab active" data-id="best" style="color:#000;font-weight:600;
                        border-bottom:2px solid #ff2d55;padding-bottom:6px;cursor:pointer">
             Donation 🔥
           </span>
@@ -3669,7 +3672,7 @@
             Snacks
           </span> -->
         </div>
-      
+
         <!-- SECTIONS -->
         <!-- <div id="best" style="padding:14px 16px">
           <div style="font-size:16px;font-weight:700">Bestselling 🔥</div>
@@ -3700,7 +3703,7 @@
             </div>
           </div>
         </div>
-  
+
         <div class="offer-item">
           <div class="offer-info">
             <h4>Wings Duo Bucket</h4>
@@ -3718,14 +3721,15 @@
             <div class="offer-price">Ð 57</div>
           </div>
           <div class="offer-img">
-            <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" alt="Wings Duo Bucket" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" alt="Wings Duo Bucket"
+              loading="lazy">
             <div class="add-btn-container" id="product-2">
               <button class="add-btn"
                 onclick="addToCart('2', 'Wings Duo Bucket', '8pcs wings + fries + drink', 57, 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092')">+</button>
             </div>
           </div>
         </div>
-  
+
         <div class="offer-item">
           <div class="offer-info">
             <h4>Twister Box</h4>
@@ -3751,12 +3755,12 @@
           </div>
         </div>
       </div>
-     
+
     </div>
   </div>
 
   <!-- style="height: 200px;background: linear-gradient(135deg, #e6f7f0, #f4fff9); " -->
-  <div id="impact" class="hidden">
+  <div id="impact" class="hidden appBody" style="height: 100vh;">
     <div class="headerOrder">
       <div class="back" onclick="goHome()">←</div>
       <div class="header-title">Impact</div>
@@ -3765,8 +3769,8 @@
     <div class="" style="text-align: center; margin-top:30px;">
       <div style="
       color: var(--primary-color);"><i class="fa-solid fa-seedling"></i></div>
-      <h2>Your Impact</h2>
-      <p>Track the difference we're making together</p>
+      <h2 style="color: var(--bg-primary);">Your Impact</h2>
+      <p style="color: var(--bg-primary);">Track the difference we're making together</p>
     </div>
 
     <div class="total-impact">
@@ -3818,7 +3822,7 @@
 
   </div>
 
-  <div class="app" id="donate" class="hidden">
+  <div class="app appBody" id="donate" class="hidden" style="height: 100vh;">
     <div class="headerOrder">
       <div class="back" onclick="goHome()">←</div>
       <div class="header-title">Donate</div>
@@ -3891,9 +3895,9 @@
       <div class="pay-header">
         <i class="fa-solid fa-circle-check"></i>
         <h2>Ready to Donate!</h2>
-        <p>Your Basmati Rice will help feed workers in need</p>
+        <p style="color: var(--bg-primary);">Your Basmati Rice will help feed workers in need</p>
         <h1>AED 5.00</h1>
-        <p>Processing fee</p>
+        <p style="color: var(--bg-primary);">Processing fee</p>
       </div>
 
       <div class="card">
@@ -3910,7 +3914,7 @@
     </div>
   </div>
   <!-- ORDERS -->
-  <div id="orders" class="hidden">
+  <div id="orders" class="hidden appBody">
     <!-- <div class="header">
     <span onclick="goHome()">←</span> Orders
   </div>
@@ -3970,7 +3974,7 @@
 
         <!-- STATUS -->
         <div class="status-text">
-          Your delivery agent is <span class="highlight">on his way to the restaurant</span>. Order #DUB-4829
+          Your delivery agent is <span class="highlight">on The drone way to the restaurant</span>. Order #DUB-4829
         </div>
 
       </div>
@@ -4016,7 +4020,7 @@
 
     </div>
   </div>
-  <div id="ordersDelivery" class="hidden" style="height:100vh ;">
+  <div id="ordersDelivery" class="hidden appBody" style="height:100vh ;">
     <!-- <div class="header">
       <span onclick="goHome()">←</span> Orders
     </div>
@@ -4033,14 +4037,14 @@
     </div>
 
     <!-- TITLE -->
-    <div class="section">Placed Orders</div>
+    <div class="" style="color: var(--bg-primary); font-size: 18px; font-weight: 700; padding: 10px;">Placed Orders</div>
 
     <!-- ORDER 1 -->
     <div class="order">
       <img class="logo" src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec">
       <div class="order-body">
-        <div class="restaurant">Sushi Cago</div>
-        <div class="meta">24 Oct 2025 · 2 items · Đ 48.95</div>
+        <div class="restaurant" style="color: var(--bg-primary);">Sushi Cago</div>
+        <div class="meta" style="color: var(--bg-primary);">24 Oct 2025 · 2 items · Đ 48.95</div>
         <div class="actions">
           <button class="order-again">Order again</button>
           <div class="status delivered">Delivered</div>
@@ -4053,8 +4057,8 @@
     <div class="order">
       <img class="logo" src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
       <div class="order-body">
-        <div class="restaurant">Dave's Hot Chicken</div>
-        <div class="meta">15 Oct 2025 · 1 item · Đ 42.00</div>
+        <div class="restaurant" style="color: var(--bg-primary);">Dave's Hot Chicken</div>
+        <div class="meta" style="color: var(--bg-primary);">15 Oct 2025 · 1 item · Đ 42.00</div>
         <div class="actions">
           <button class="order-again">Order again</button>
           <div class="status picked">Picked up</div>
@@ -4078,7 +4082,7 @@
     </div>
   </div>
   <!-- ACCOUNT -->
-  <div id="account" class="hidden" style="height: 98vh;">
+  <div id="account" class="hidden appBody" style="height: 98vh;">
     <!-- <div class="list-item" onclick="openProfile()">Profile ➜</div>
   <div class="list-item" onclick="openAddresses()">Addresses ➜</div>
   <div class="list-item" onclick="openOrders()">Orders ➜</div> -->
@@ -4088,7 +4092,7 @@
 
     <div class="list">
       <div class="list-item" onclick="openProfile()">
-        <div class="list-left">
+        <div class="list-left" style="color: var(--bg-primary);">
           <div class="icon">👤</div>
           Profile
         </div>
@@ -4096,7 +4100,7 @@
       </div>
 
       <div class="list-item" onclick="openAddresses()">
-        <div class="list-left">
+        <div class="list-left" style="color: var(--bg-primary);">
           <div class="icon">📍</div>
           Addresses
         </div>
@@ -4105,7 +4109,7 @@
 
       <div class="list-item">
         <!-- onclick="openPayment()" -->
-        <div class="list-left">
+        <div class="list-left" style="color: var(--bg-primary);">
           <div class="icon">💳</div>
           Payment
         </div>
@@ -4121,7 +4125,7 @@
       </div> -->
 
       <div class="list-item">
-        <div class="list-left">
+        <div class="list-left" style="color: var(--bg-primary);">
           <div class="icon">💰</div>
           Credits
         </div>
@@ -4129,9 +4133,9 @@
       </div>
     </div>
 
-    <div class="signout" onclick="handleLogout()">↩ Sign Out</div>
+    <div class="signout" onclick="handleLogout()" style="color: var(--bg-primary);">↩ Sign Out</div>
 
-    <div class="footer-links">
+    <div class="footer-links" style="color: var(--bg-primary);">
       Terms of Use · Privacy Policy<br />
       App version v1.0.0
     </div>
@@ -4288,7 +4292,7 @@
   </div>
 
   <!-- CART -->
-  <div id="cart" class="hidden" style="height: 98vh;">
+  <div id="cart" class="hidden appBody" style="height: 98vh;">
     <div class="headerOrder">
       <div class="back" onclick="goHome()">←</div>
       <div class="header-title">Shopping Cart</div>
@@ -4308,7 +4312,7 @@
   </div>
 
   <!-- CHECKOUT - ADDRESS SELECTION -->
-  <div id="checkoutAddress" class="hidden">
+  <div id="checkoutAddress" class="hidden appBody">
     <div class="headerOrder">
       <div class="back" onclick="openCart()">←</div>
       <div class="header-title">Select Delivery Address</div>
@@ -4367,7 +4371,7 @@
 
       <!-- Address Selection -->
       <div class="checkout-section">
-        <div class="section-title">Select Delivery Address</div>
+        <div class="section-title" style="color: var(--bg-primary);">Select Delivery Address</div>
         <div class="address-list" id="checkoutAddressList">
           <!-- Addresses will be dynamically inserted -->
         </div>
@@ -4380,7 +4384,7 @@
   </div>
 
   <!-- CHECKOUT - PAYMENT -->
-  <div id="checkoutPayment" class="hidden">
+  <div id="checkoutPayment" class="hidden appBody">
     <div class="headerOrder">
       <div class="back" onclick="openCheckoutAddress()">←</div>
       <div class="header-title">Payment</div>
@@ -4390,7 +4394,7 @@
 
 
     <div class="checkout-section" style="margin:0px 26px;">
-      <div class="section-title">Dubai Area</div>
+      <div class="section-title" style="color: var(--bg-primary);">Dubai Area</div>
 
       <select id="dubaiLocation" style="
       width:100%;
@@ -4439,8 +4443,8 @@
 
       <!-- Selected Address -->
       <div class="checkout-section">
-        <div class="section-title">Delivery Address</div>
-        <div class="selected-address-card" id="selectedAddressCard">
+        <div class="section-title" style="color: var(--bg-primary);">Delivery Address</div>
+        <div class="selected-address-card" style="background: var(--bg-primary);" id="selectedAddressCard">
           <!-- Address will be dynamically inserted -->
         </div>
       </div>
@@ -4468,21 +4472,21 @@
         </div>
       </div> -->
       <!-- Payment Methods (Same-to-same Design) -->
-       <div style="display: flex; justify-content: space-between; padding: 10px;
-       border: 2px solid var(--primary-dark);
+      <div style="display: flex; justify-content: space-between; padding: 10px;
+       border: 2px solid var(--primary-dark);background: var(--bg-primary);
        border-radius: 10px; ">
         <p style="font-weight: 600;
         font-size: 16px;
-        color: var(--text-primary);
+        color: var(--text-primary); 
         margin-bottom: 8px;">Add note for restaurant</p>
         <span style="font-weight: 700;color: var(--primary-dark); font-size: 18;">+</span>
-       </div>
+      </div>
       <div class="checkout-section" style="margin-top:20px;">
 
         <div class="section-title" style="
     font-size:18px;
     font-weight:700;
-    margin-bottom:10px;
+    margin-bottom:10px; color: var(--bg-primary);
   ">
           Pay with
         </div>
@@ -4498,9 +4502,9 @@
           <div style="margin-right:12px;">
             <input type="radio" name="payment" style="margin: 0px !important;" />
           </div>
-          <div style="flex:1;font-size:16px;font-weight:500;">
-            Debit/Credit Card 
-          </div> 
+          <div style="flex:1;font-size:16px;font-weight:500; color: var(--bg-primary);">
+            Debit/Credit Card
+          </div>
           <div style="font-size:20px;">💳</div>
         </div>
 
@@ -4538,11 +4542,11 @@
           <div style="margin-right:12px;">
             <input type="radio" name="payment" checked style="margin: 0px !important;" />
           </div>
-          <div style="flex:1;font-size:16px;font-weight:500;">
+          <div style="flex:1;font-size:16px;font-weight:500; color: var(--bg-primary);">
             Apple Pay
           </div>
-          <div style="font-size:35px;"><i class="fa-brands fa-apple-pay" ></i>
-            </div>
+          <div style="font-size:35px;"><i class="fa-brands fa-apple-pay" style="color: var(--bg-primary);"></i>
+          </div>
         </div>
 
         <!-- Cash -->
@@ -4556,7 +4560,7 @@
           <div style="margin-right:12px;">
             <input type="radio" name="payment" style="margin: 0px !important;" />
           </div>
-          <div style="flex:1;font-size:16px;font-weight:500;">
+          <div style="flex:1;font-size:16px;font-weight:500; color: var(--bg-primary);">
             Cash on Delivery
           </div>
           <div style="font-size:20px;">💵</div>
@@ -4573,7 +4577,7 @@
           <div style="margin-right:12px;">
             <input type="radio" name="payment" style="margin: 0px !important;" />
           </div>
-          <div style="flex:1;font-size:16px;font-weight:500;">
+          <div style="flex:1;font-size:16px;font-weight:500; color: var(--bg-primary);">
             ADCB TouchPoints
           </div>
           <div style="font-size:18px;">⭕</div>
@@ -4589,7 +4593,7 @@
           <div style="margin-right:12px;">
             <input type="checkbox" disabled />
           </div>
-          <div style="font-size:16px;">
+          <div style="font-size:16px; color: var(--bg-primary);">
             Use my noon Credits (Ð 15.00)
           </div>
         </div>
@@ -4755,7 +4759,7 @@
 
 
   <div id="checkoutSuccess" class="hidden">
-    <div class="success-content">
+    <div class="success-content appBody">
       <!-- <div class="success-icon">✓</div> -->
       <!-- <div class="success-title">Order Placed Successfully!</div>
       <div class="success-message">Your order has been confirmed and will be delivered soon.</div>
@@ -4846,8 +4850,8 @@
 
         <!-- Footer -->
         <div class="footer">
-          <p>Live tracking powered by SkyDrop Technology</p>
-          <p>Delivery ID: DUB-4829-3FR • Last updated: <span id="updateTime">Just now</span></p>
+          <p style="color: var(--bg-primary);">Live tracking powered by SkyDrop Technology</p>
+          <p style="color: var(--bg-primary);">Delivery ID: DUB-4829-3FR • Last updated: <span id="updateTime">Just now</span></p>
         </div>
 
       </div>
@@ -4901,10 +4905,8 @@
       <!-- <span class="cart-badge" id="cartBadge" style="display: none;">0</span> -->
     </div>
 
-    <div class="nav" 
-    onclick="openOrdersDelivery()"
-    >
-    <!-- onclick="openOrders()" -->
+    <div class="nav" onclick="openOrdersDelivery()">
+      <!-- onclick="openOrders()" -->
       <i class="fa-solid fa-box"></i>
       <span>Orders</span>
     </div>
@@ -5368,8 +5370,8 @@
 
       const subtotalEl = getEl('checkoutSubtotal');
       const totalEl = getEl('checkoutTotal');
-      if (subtotalEl) subtotalEl.textContent = `AED ${subtotal}`;
-      if (totalEl) totalEl.textContent = `AED ${total}`;
+      if (subtotalEl) subtotalEl.textContent = `Ð ${subtotal}`;
+      if (totalEl) totalEl.textContent = `Ð ${total}`;
 
       // Render addresses
       const addressList = getEl('checkoutAddressList');
@@ -5390,7 +5392,7 @@
         ];
 
         addressList.innerHTML = addresses.map((addr, index) => `
-      <div class="checkout-address-card ${index === 0 ? 'selected' : ''}" onclick="selectCheckoutAddress('${addr.id}')" data-address-id="${addr.id}">
+      <div class="checkout-address-card"  data-address-id="${addr.id}">
         <div class="checkout-address-header">
           <div class="checkout-address-type">${addr.type}</div>
         </div>
@@ -5820,7 +5822,48 @@
 
 
   </script>
+ <script>
+  /* Disable right click */
+  document.addEventListener('contextmenu', e => e.preventDefault());
 
+  /* Disable key shortcuts */
+  document.addEventListener('keydown', function (e) {
+    if (
+      e.ctrlKey && (
+        e.key === 'u' ||     // Ctrl+U
+        e.key === 'c' ||     // Ctrl+C
+        e.key === 'x' ||     // Ctrl+X
+        e.key === 'v' ||     // Ctrl+V
+        e.key === 's' ||     // Ctrl+S
+        e.key === 'p' ||     // Ctrl+P
+        e.key === 'a'        // Ctrl+A
+      )
+    ) {
+      e.preventDefault();
+      return false;
+    }
+
+    /* Disable DevTools keys */
+    if (
+      e.key === 'F12' ||
+      (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key))
+    ) {
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  /* Detect DevTools open */
+  setInterval(() => {
+    const threshold = 160;
+    if (
+      window.outerWidth - window.innerWidth > threshold ||
+      window.outerHeight - window.innerHeight > threshold
+    ) {
+      document.body.innerHTML = '<h2 style="text-align:center;margin-top:40vh;">DevTools Detected</h2>';
+    }
+  }, 1000);
+</script>
 </body>
 
 </html>
