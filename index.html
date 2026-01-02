@@ -71,7 +71,7 @@
 
     body {
       margin: 0;
-      /* background: linear-gradient(180deg, #F8F9FA 0%, #FFFFFF 100%); */
+      background: #16a34a;
       padding-bottom: 80px;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
       color: var(--text-primary);
@@ -1244,8 +1244,8 @@
 
     .remove-btn {
       background: transparent;
-      border: 2px solid #E74C3C;
-      color: #E74C3C;
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
       padding: 8px 16px;
       border-radius: var(--radius-md);
       font-size: 13px;
@@ -1255,7 +1255,7 @@
     }
 
     .remove-btn:hover {
-      background: #E74C3C;
+      background: var(--primary-color);
       color: #fff;
       transform: translateY(-1px);
       box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
@@ -2770,6 +2770,7 @@
     .card-left-text {
       /* display: flex; */
       flex-direction: column;
+      color: var(--primary-color);
     }
 
     .card-left-text b {
@@ -2785,7 +2786,7 @@
 
     /* RIGHT PILL */
     .checkout-pill {
-      background: #e11d48;
+      background:var(--primary-color);
       color: #fff;
       padding: 8px;
       border-radius: 12px;
@@ -3300,17 +3301,10 @@
         cursor: pointer;
         outline: none;
         padding: 4px 6px;" onchange="openLocationPicker(this.value)">
-          <option value="">📍 Select Camp Location</option>
-          <option>Deira</option>
-          <option>Bur Dubai</option>
-          <option>Karama</option>
-          <option>Jumeirah</option>
-          <option>Business Bay</option>
-          <option>Dubai Marina</option>
-          <option>Al Barsha</option>
-          <option>JLT</option>
-          <option>Downtown Dubai</option>
-          <option>International City</option>
+          <option>📍 Deira</option>
+          <option>📍Bur Dubai</option>
+          <option>📍Karama</option>
+          <option>📍Jumeirah</option>
         </select>
 
       </div>
@@ -3685,6 +3679,16 @@
           <div class="offer-info">
             <h4>22pcs Mighty Bucket 🔥</h4>
             <p>16pcs chicken + fries + buns</p>
+            <div class="date-info">
+              <div class="date-item">
+                <div class="date-label">Production Date</div>
+                <div class="date-value production">19 Nov 2025</div>
+              </div>
+              <div class="date-item">
+                <div class="date-label">Expiry Date</div>
+                <div class="date-value expiry">26 Nov 2026</div>
+              </div>
+            </div>
             <div class="offer-price">Ð 135</div>
           </div>
           <div class="offer-img">
@@ -3701,6 +3705,16 @@
           <div class="offer-info">
             <h4>Wings Duo Bucket</h4>
             <p>8pcs wings + fries + drink</p>
+            <div class="date-info">
+              <div class="date-item">
+                <div class="date-label">Production Date</div>
+                <div class="date-value production">19 Nov 2025</div>
+              </div>
+              <div class="date-item">
+                <div class="date-label">Expiry Date</div>
+                <div class="date-value expiry">26 Nov 2026</div>
+              </div>
+            </div>
             <div class="offer-price">Ð 57</div>
           </div>
           <div class="offer-img">
@@ -3716,6 +3730,16 @@
           <div class="offer-info">
             <h4>Twister Box</h4>
             <p>Twister + fries + drink</p>
+            <div class="date-info">
+              <div class="date-item">
+                <div class="date-label">Production Date</div>
+                <div class="date-value production">19 Nov 2025</div>
+              </div>
+              <div class="date-item">
+                <div class="date-label">Expiry Date</div>
+                <div class="date-value expiry">26 Nov 2026</div>
+              </div>
+            </div>
             <div class="offer-price">Ð 34</div>
           </div>
           <div class="offer-img">
@@ -5269,7 +5293,17 @@
       <div class="cart-item-info">
         <div class="cart-item-title">${item.name}</div>
         <div class="cart-item-desc">${item.description}</div>
-        <div class="cart-item-price">AED ${item.price}</div>
+        <div class="cart-item-price">Ð ${item.price}</div>
+        <div class="date-info">
+            <div class="date-item">
+              <div class="date-label">Production Date</div>
+              <div class="date-value production">19 Nov 2025</div>
+            </div>
+            <div class="date-item">
+              <div class="date-label">Expiry Date</div>
+              <div class="date-value expiry">26 Nov 2026</div>
+            </div>
+          </div>
         <div class="cart-item-controls">
           <div class="quantity-control">
             <button class="qty-btn" onclick="updateQuantity('${item.id}', -1)">−</button>
