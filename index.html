@@ -3299,19 +3299,28 @@
     <div class="header">
       <div style="display: flex; justify-content: space-between; align-items: center;">
 
-        <!-- Location Dropdown -->
-        <select class="location-dropdown" style="border: none;
-        background: transparent;
-        font-size: 14px;
-        font-weight: 600;
-        cursor: pointer;
-        outline: none;
-        padding: 4px 6px; width: 100%;" onchange="openLocationPicker(this.value)">
-          <option>📍 Deira</option>
-          <option>📍Bur Dubai</option>
-          <option>📍Karama</option>
-          <option>📍Jumeirah</option>
-        </select>
+        <select
+        class="location-dropdown"
+        style="
+          border: none;
+          background: transparent;
+          font-size: 14px;
+          font-weight: 600;
+          cursor: pointer;
+          outline: none;
+          padding: 4px 6px;
+          width: 100%;
+        "
+        onchange="openLocationPicker(this.value)"
+      >
+        <option>📍 Sonapur Camp</option>
+        <option>📍 Al Quoz</option>
+        <option>📍 Dubai South</option>
+        <option>📍 Trade Center Roundabout</option>
+        <option>📍 Jebel Ali</option>
+        <option>📍 DIP (Dubai Investment Park)</option>
+      </select>
+      
 
       </div>
 
@@ -3389,108 +3398,9 @@
 
 
     </div>
+    <div id="listHomePageProduct">
 
-    <div class="list">
-      <div class="card" onclick="openOffers()">
-        <img
-          src="https://images.ctfassets.net/wtodlh47qxpt/5et3gPnC8ZgLYNPhRFb85T/2c8fb8c0a64e4adb748a79d8a7083591/All-in-One-Bucket.jpg?h=600&w=800&fm=webp&fit=fill"
-          alt="KFC Restaurant" loading="lazy">
-        <div class="card-body">
-          <div class="card-title">KFC</div>
-          <div class="card-sub">Fast Food, American</div>
-          <div class="card-info">
-            <div class="time"><i class="fa-solid fa-bolt" style="color:#2e7d32;"></i> 20–30 mins</div>
-            <div class="rating">★ 4.4</div>
-          </div>
-          <div class="date-info">
-            <div class="date-item">
-              <div class="date-label">Production Date</div>
-              <div class="date-value production">19 Nov 2025</div>
-            </div>
-            <div class="date-item">
-              <div class="date-label">Expiry Date</div>
-              <div class="date-value expiry">26 Nov 2026</div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-    <div class="list">
-      <div class="card" onclick="openOffers()">
-        <img
-          src="https://images.ctfassets.net/wtodlh47qxpt/RFuh4GViScBmegob9BTtq/3b3037798cb62793436109cc8249a066/BUCKETS_Bucket-for-Two_Delivery.jpg?h=600&w=800&fm=webp&fit=fill"
-          alt="Fast Food Restaurant" loading="lazy">
-        <div class="card-body">
-          <div class="card-title">KFC Tandoori Zinger Box</div>
-          <div class="card-sub">Fast Food, American</div>
-          <div class="card-info">
-            <div class="time"><i class="fa-solid fa-bolt" style="color:#2e7d32;"></i> 20–30 mins</div>
-            <div class="rating">★ 4.4</div>
-          </div>
-          <div class="date-info">
-            <div class="date-item">
-              <div class="date-label">Production Date</div>
-              <div class="date-value production">19 Nov 2025</div>
-            </div>
-            <div class="date-item">
-              <div class="date-label">Expiry Date</div>
-              <div class="date-value expiry">26 Nov 2026</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="list">
-      <div class="card" onclick="openOffers()">
-        <img
-          src="https://images.ctfassets.net/wtodlh47qxpt/2zDCHJjRjp1CNsrytoNRJk/fa202b221bf6d3d893eabc9528171046/BUCKETS_Ultimate-Savings-Chicken-Bucket_Delivery.jpg?h=600&w=800&fm=webp&fit=fill"
-          alt="Restaurant Food" loading="lazy">
-        <div class="card-body">
-          <div class="card-title">Tandoori Zinger Box</div>
-          <div class="card-sub">Fast Food, American</div>
-          <div class="card-info">
-            <div class="time"><i class="fa-solid fa-bolt" style="color:#2e7d32;"></i> 20–30 mins</div>
-            <div class="rating">★ 4.4</div>
-          </div>
-          <div class="date-info">
-            <div class="date-item">
-              <div class="date-label">Production Date</div>
-              <div class="date-value production">19 Nov 2025</div>
-            </div>
-            <div class="date-item">
-              <div class="date-label">Expiry Date</div>
-              <div class="date-value expiry">26 Nov 2026</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="list">
-      <div class="card" onclick="openOffers()">
-        <img
-          src="https://images.ctfassets.net/wtodlh47qxpt/5et3gPnC8ZgLYNPhRFb85T/2c8fb8c0a64e4adb748a79d8a7083591/All-in-One-Bucket.jpg?h=600&w=800&fm=webp&fit=fill"
-          alt="KFC Restaurant" loading="lazy">
-        <div class="card-body">
-          <div class="card-title">Classic Zinger Box</div>
-          <div class="card-sub">Fast Food, American</div>
-          <div class="card-info">
-            <div class="time"><i class="fa-solid fa-bolt" style="color:#2e7d32;"></i> 20–30 mins</div>
-            <div class="rating">★ 4.4</div>
-          </div>
-          <div class="date-info">
-            <div class="date-item">
-              <div class="date-label">Production Date</div>
-              <div class="date-value production">19 Nov 2025</div>
-            </div>
-            <div class="date-item">
-              <div class="date-label">Expiry Date</div>
-              <div class="date-value expiry">26 Nov 2026</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 
   <!-- OFFERS -->
@@ -3595,7 +3505,8 @@
       <div class="header-title">KFC</div>
     </div>
 
-    <div class="listOffers" style="height: 165vh;">
+    <div class="listOffers">
+      <!-- style="height: 165vh;" -->
 
 
       <div style="max-width:420px;margin:auto;
@@ -3667,7 +3578,7 @@
 
           <span class="tab active" data-id="best" style="color:#000;font-weight:600;
                        border-bottom:2px solid #ff2d55;padding-bottom:6px;cursor:pointer">
-            Donation 🔥
+            Donation
           </span>
           <!-- <span class="tab" data-id="deal" style="color:#999;cursor:pointer">
             Deal Of The Day
@@ -3688,9 +3599,10 @@
           <div style="font-size:16px;font-weight:700">Bestselling 🔥</div>
     
         </div> -->
-        <div class="offer-item" style="margin-top: 10px;">
+        <div id="offersProducts" style="margin-top:10px ;"></div>
+        <!-- <div class="offer-item" style="margin-top: 10px;">
           <div class="offer-info">
-            <h4>22pcs Mighty Bucket 🔥</h4>
+            <h4>22pcs Mighty Bucket</h4>
             <p>16pcs chicken + fries + buns</p>
             <div class="date-info">
               <div class="date-item">
@@ -3767,7 +3679,7 @@
                 onclick="addToCart('3', 'Twister Box', 'Twister + fries + drink', 34, 'https://images.ctfassets.net/wtodlh47qxpt/2zDCHJjRjp1CNsrytoNRJk/fa202b221bf6d3d893eabc9528171046/BUCKETS_Ultimate-Savings-Chicken-Bucket_Delivery.jpg?h=600&w=800&fm=webp&fit=fill')">+</button>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
 
     </div>
@@ -4346,7 +4258,7 @@
           Redeem Gift Card
         </div>
 
-        
+
       </div>
 
       <!-- TABS -->
@@ -5177,6 +5089,10 @@
       if (donateEl) donateEl.style.display = "none";
       if (ordersDeliveryEl) ordersDeliveryEl.style.display = "none";
       if (openCreditEL) openCreditEL.style.display = "none";
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
       // Note: login is handled separately in checkLoginStatus
     }
 
@@ -5458,31 +5374,241 @@
         }
       }
     }
+    const products = [
+      {
+        id: '1',
+        name: 'Duo Deals',
+        description: '2 Big flavor burger & 8 wings with 2 fries, 4 dips & 2 drinks',
+        price: 11,
+        image: 'https://f.nooncdn.com/food_production/food/menu/M0587758999130627043353277A/h0056u1p_0.jpg?width=200&crop=1:1&format=avif',
+        random: "5 hero’s fed"
+      },
+      {
+        id: '2',
+        name: 'Duo Platter',
+        description: '24 Wings + 4 dips ( 4 flavors)',
+        price: 7,
+        image: 'https://f.nooncdn.com/food_production/food/menu/M0587758999130627043353277A/9gvam9qg_0.jpg?width=200&crop=1:1&format=avif'
+        , random: "8 hero’s fed"
+      },
+      {
+        id: '3',
+        name: 'Tender Platter',
+        description: '12 Tenders pcs + 2 flavors +2 dips',
+        price: 9,
+        image: 'https://f.nooncdn.com/food_production/food/menu/M0587758999130627043353277A/ovhohr0v_0.jpg?width=200&crop=1:1&format=avif'
+        , random: "7 hero’s fed"
+      },
+      {
+        id: '5',
+        name: 'Kids Meal',
+        description: '3 Pcs boneless or tenders with small fries & 1 juice.',
+        price: 8,
+        image: 'https://f.nooncdn.com/food_production/food/menu/M0587758999130627043353277A/n59z6uiq_0.jpg?width=200&crop=1:1&format=avif'
+        , random: "2 hero’s fed"
+      },
+      {
+        id: '6',
+        name: 'Winger Saver',
+        description: '14 Wings + 2 dips ( 2 flavors)',
+        price: 6,
+        image: 'https://f.nooncdn.com/food_production/food/menu/M0587758999130627043353277A/smhbzhy1_0.jpg?width=200&crop=1:1&format=avif'
+        , random: "4 hero’s fed"
+      },
+      {
+        id: '7',
+        name: 'Big Flavor Burger',
+        description: 'Crispy chicken cooked to order in any of our 10 signature flavors crunchy slaw pickles house',
+        price: 5,
+        image: 'https://f.nooncdn.com/food_production/food/menu/M3654979979441761761185117A/4d7bnqf3_0.jpg?width=200&crop=1:1&format=avif'
+        , random: "5 hero’s fed"
+      },
+      {
+        id: '8',
+        name: '8 Pcs Combo',
+        description: 'Choice of classic or boneless tossed in any 2 flavors of your choice served with 1 side dish along with 1 dip and beverage.',
+        price: 5,
+        image: 'https://f.nooncdn.com/food_production/food/menu/M0587758999130627043353277A/nxbapye3_0.jpg?width=200&crop=1:1&format=avif'
+        , random: "3 hero’s fed"
+      },
+      {
+        id: '9',
+        name: '10 Pcs Combo',
+        description: 'Choice of 10 pcs classic or boneless tossed in any 2 flavors of your choice served with 1 side dish along with 1 dip and 1 beverage.',
+        price: 6,
+        image: 'https://f.nooncdn.com/food_production/food/menu/M0587758999130627043353277A/083c939l_0.jpg?width=200&crop=1:1&format=avif'
+        , random: "9 hero’s fed"
+      },
+      {
+        id: '8',
+        name: '12 Pcs Combo',
+        description: '12 Wings of your choice tossed in any 2 flavors of your choice, served with 1 side dish along with 1 dip and drink.',
+        price: 10,
+        image: 'https://f.nooncdn.com/food_production/food/menu/M0587758999130627043353277A/083c939l_0.jpg?width=200&crop=1:1&format=avif'
+        , random: "10 hero’s fed"
+      },
+    ];
+    function getAllProduct() {
+      const listEl = document.getElementById('listHomePageProduct');
+      listEl.innerHTML = ''; // clear old data
+
+      products.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'card'; card.style.cssText = `margin:15px`;
+        card.onclick = () => openOffers(item.id);
+
+        card.innerHTML = `
+        <img src="${item.image}" alt="${item.name}" loading="lazy" />
+        <div class="card-body">
+          <div class="card-title">${item.name}</div>
+          <div class="card-sub">${item.description}</div>
+
+          <div class="card-info">
+            <div class="time">
+              <i class="fa-solid fa-bolt" style="color:#2e7d32;"></i>
+              20–30 mins
+            </div>
+            <div class="rating">★ 4.4</div>
+          </div>
+
+          <div class="price">AED ${item.price}</div>
+
+          <div class="date-info">
+            <div class="date-item">
+              <div class="date-label">Production Date</div>
+              <div class="date-value production">19 Nov 2025</div>
+            </div>
+            <div class="date-item">
+              <div class="date-label">Expiry Date</div>
+              <div class="date-value expiry">26 Nov 2026</div>
+            </div>
+          </div>
+        </div>
+      `;
+
+        listEl.appendChild(card);
+      });
+    }
+
+    function renderOffers() {
+      const offerList = document.getElementById('offersProducts');
+      offerList.innerHTML = '';
+
+      products.forEach(item => {
+        const offer = document.createElement('div');
+        offer.className = 'offer-item';
+
+        offer.innerHTML = `
+        <div class="offer-info" style="width:80%">
+          <h4>${item.name}</h4>
+          <p>${item.description}</p>
+
+          <div class="date-info">
+            <div class="date-item">
+              <div class="date-label">Production Date</div>
+              <div class="date-value production">19 Nov 2025</div>
+            </div>
+            <div class="date-item">
+              <div class="date-label">Expiry Date</div>
+              <div class="date-value expiry">26 Nov 2026</div>
+            </div>
+          </div>
+
+         <div style="display:flex;    justify-content: space-between;">
+           <div class="offer-price">Ð ${item.price}</div>
+          <div class="offer-price"><p>${item.random}</p></div>
+          </div>
+        </div>
+
+        <div class="offer-img">
+          <img src="${item.image}" alt="${item.name}" loading="lazy" />
+          <div class="add-btn-container" id="product-${item.id}">
+            <button class="add-btn"
+              onclick="addToCart(
+                '${item.id}',
+                '${item.name}',
+                '${item.description}',
+                ${item.price},
+                '${item.image}'
+              )">+</button>
+          </div>
+        </div>
+      `;
+
+        offerList.appendChild(offer);
+      });
+    }
+
+    getAllProduct();
+
+    renderOffers();
 
     // Get product data
     function getProductData(id) {
       const products = {
         '1': {
           id: '1',
-          name: '22pcs Mighty Bucket 🔥',
-          description: '16pcs chicken + fries + buns',
-          price: 135,
-          image: 'https://images.ctfassets.net/wtodlh47qxpt/5et3gPnC8ZgLYNPhRFb85T/2c8fb8c0a64e4adb748a79d8a7083591/All-in-One-Bucket.jpg?h=600&w=800&fm=webp&fit=fill'
+          name: 'Duo Deals',
+          description: '2 Big flavor burger & 8 wings with 2 fries, 4 dips & 2 drinks',
+          price: 11,
+          image: 'https://f.nooncdn.com/food_production/food/menu/M0587758999130627043353277A/h0056u1p_0.jpg?width=200&crop=1:1&format=avif'
         },
         '2': {
           id: '2',
-          name: 'Wings Duo Bucket',
-          description: '8pcs wings + fries + drink',
-          price: 57,
-          image: 'https://images.ctfassets.net/wtodlh47qxpt/RFuh4GViScBmegob9BTtq/3b3037798cb62793436109cc8249a066/BUCKETS_Bucket-for-Two_Delivery.jpg?h=600&w=800&fm=webp&fit=fill'
+          name: 'Duo Platter',
+          description: '24 Wings + 4 dips ( 4 flavors)',
+          price: 7,
+          image: 'https://f.nooncdn.com/food_production/food/menu/M0587758999130627043353277A/9gvam9qg_0.jpg?width=200&crop=1:1&format=avif'
         },
         '3': {
           id: '3',
-          name: 'Twister Box',
-          description: 'Twister + fries + drink',
-          price: 34,
-          image: 'https://images.ctfassets.net/wtodlh47qxpt/2zDCHJjRjp1CNsrytoNRJk/fa202b221bf6d3d893eabc9528171046/BUCKETS_Ultimate-Savings-Chicken-Bucket_Delivery.jpg?h=600&w=800&fm=webp&fit=fill'
-        }
+          name: 'Tender Platter',
+          description: '12 Tenders pcs + 2 flavors +2 dips',
+          price: 9,
+          image: 'https://f.nooncdn.com/food_production/food/menu/M0587758999130627043353277A/ovhohr0v_0.jpg?width=200&crop=1:1&format=avif'
+        },
+        '4': {
+          id: '5',
+          name: 'Solo Meal',
+          description: '1 Big flavor burger & 3 wings with fries, dips & drinks',
+          price: 8,
+          image: 'https://f.nooncdn.com/food_production/food/menu/M0587758999130627043353277A/j0wxzjsx_0.jpg?width=200&crop=1:1&format=avif'
+        },
+        '5': {
+          id: '6',
+          name: 'Winger Saver',
+          description: '14 Wings + 2 dips ( 2 flavors)',
+          price: 6,
+          image: 'https://f.nooncdn.com/food_production/food/menu/M0587758999130627043353277A/smhbzhy1_0.jpg?width=200&crop=1:1&format=avif'
+        },
+        '6': {
+          id: '7',
+          name: '6 Pcs Combo',
+          description: 'Choice of classic or boneless tossed in any 2 flavors of your choice served with 1 side dish along with 1 dip and beverage.',
+          price: 50,
+          image: 'https://f.nooncdn.com/food_production/food/menu/M0587758999130627043353277A/g3ura5v1_0.jpg?width=200&crop=1:1&format=avif'
+        },
+        '7': {
+          id: '8',
+          name: '8 Pcs Combo',
+          description: 'Choice of classic or boneless tossed in any 2 flavors of your choice served with 1 side dish along with 1 dip and beverage.',
+          price: 50,
+          image: 'https://f.nooncdn.com/food_production/food/menu/M0587758999130627043353277A/nxbapye3_0.jpg?width=200&crop=1:1&format=avif'
+        },
+        '8': {
+          id: '9',
+          name: '10 Pcs Combo',
+          description: 'Choice of 10 pcs classic or boneless tossed in any 2 flavors of your choice served with 1 side dish along with 1 dip and 1 beverage.',
+          price: 6,
+          image: 'https://f.nooncdn.com/food_production/food/menu/M0587758999130627043353277A/083c939l_0.jpg?width=200&crop=1:1&format=avif'
+        },
+        '9': {
+          id: '8',
+          name: '12 Pcs Combo',
+          description: '12 Wings of your choice tossed in any 2 flavors of your choice, served with 1 side dish along with 1 dip and drink.',
+          price: 10,
+          image: 'https://f.nooncdn.com/food_production/food/menu/M0587758999130627043353277A/083c939l_0.jpg?width=200&crop=1:1&format=avif'
+        },
       };
       return products[id];
     }
